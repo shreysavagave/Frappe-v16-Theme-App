@@ -1,0 +1,24 @@
+[project]
+name = "brainmine_theme"
+authors = [
+    { name = "Brainmine Web Solutions Pvt Ltd", email = "ashwani@brainminetech.com"}
+]
+description = "Brainmine AI brand theme for Frappe/ERPNext Desk and login"
+requires-python = ">=3.14"
+readme = "README.md"
+license = "MIT"
+dynamic = ["version"]
+dependencies = [
+    # "frappe~=16.0.0" # Installed and managed by bench.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0-dev,<17.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py314"

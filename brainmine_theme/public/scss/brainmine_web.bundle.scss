@@ -1,0 +1,61 @@
+// Brainmine Theme — Website bundle (hooks: web_include_css = "brainmine_web.bundle.css")
+// Login page + light brand touches on other website pages.
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+@import "./tokens";
+@import "./login";
+
+// -----------------------------------------------------------------------------
+// Light website touches — font, links, primary buttons, focus. Website pages
+// load website.bundle.css before us, so equal specificity wins by order.
+// -----------------------------------------------------------------------------
+html:not([data-theme="dark"]) {
+	--font-stack: #{$bm-font-stack};
+}
+
+html body {
+	font-family: var(--bm-font);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html ::selection {
+	background: rgba(64, 192, 156, 0.28);
+}
+
+html {
+	.web-page-content a:not(.btn),
+	.blog-content a:not(.btn) {
+		color: var(--bm-link);
+
+		&:hover {
+			color: var(--bm-link-hover);
+		}
+	}
+
+	.btn.btn-primary,
+	.btn.btn-primary:focus {
+		background-color: var(--bm-primary-bg);
+		border-color: var(--bm-primary-bg);
+		color: var(--bm-on-primary);
+		font-weight: 600;
+	}
+
+	.btn.btn-primary:hover,
+	.btn.btn-primary:active {
+		background-color: var(--bm-primary-bg-hover);
+		border-color: var(--bm-primary-bg-hover);
+		color: var(--bm-on-primary);
+	}
+
+	.btn:focus-visible,
+	a:focus-visible {
+		outline: none;
+		box-shadow: var(--bm-ring);
+	}
+
+	.form-control:focus {
+		border-color: var(--bm-mint-400);
+		box-shadow: var(--bm-ring);
+	}
+}

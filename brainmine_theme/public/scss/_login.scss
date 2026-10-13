@@ -1,0 +1,267 @@
+// =============================================================================
+// Brainmine Theme — login / password pages (/login, /update-password)
+// -----------------------------------------------------------------------------
+// Frappe's login.bundle.css is included by www/login.html AFTER our
+// web_include_css, so every rule here is scoped under
+// `html body[data-path=…]` (+0,1,2) to win on specificity, never !important.
+//
+// The logo is NOT set here: login.html renders `{{ logo }}`, resolved from
+// Website Settings → App Logo, then Navbar Settings → App Logo, then the
+// app_logo_url hook. Change it there.
+//
+// Website pages carry no data-theme attribute, so the card follows the OS
+// preference (prefers-color-scheme) for its light/dark variant.
+// =============================================================================
+
+$bm-login-scope: 'html body[data-path="login"], html body[data-path="update-password"]';
+
+#{$bm-login-scope} {
+	// -------------------------------------------------------------------------
+	// Page: deep teal with a very soft mint glow behind the card
+	// -------------------------------------------------------------------------
+	background-color: $bm-mint-950;
+	background-image:
+		radial-gradient(
+			ellipse 60% 50% at 50% 38%,
+			rgba(64, 192, 156, 0.16) 0%,
+			rgba(64, 192, 156, 0.05) 45%,
+			rgba(64, 192, 156, 0) 75%
+		),
+		radial-gradient(ellipse 80% 60% at 50% 120%, rgba(64, 192, 156, 0.07) 0%, rgba(64, 192, 156, 0) 70%);
+	background-attachment: fixed;
+	min-height: 100vh;
+
+	// Card-local palette (light card by default). Frappe's login rules read
+	// these espresso variables, so re-pointing them restyles every state.
+	.page-card {
+		--bm-card-bg: #{$bm-light-surface};
+		--heading-color: #{$bm-light-text};
+		--text-color: #{$bm-light-text};
+		--ink-gray-4: #{$bm-gray-500};
+		--ink-gray-5: #{$bm-light-muted};
+		--ink-gray-6: #{$bm-light-muted};
+		--surface-white: #{$bm-light-surface};
+		--surface-gray-2: #{$bm-light-subtle};
+		--outline-gray-2: #{$bm-light-border-strong};
+	}
+
+	// -------------------------------------------------------------------------
+	// Vertical centering on larger screens
+	// -------------------------------------------------------------------------
+	.page-content-wrapper {
+		@media (min-width: 576px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			min-height: 100vh;
+			padding-top: 48px;
+			padding-bottom: 48px;
+		}
+	}
+
+	// Language picker navbar (only rendered when enabled) sits on the dark page
+	.navbar {
+		background: transparent;
+		border-bottom: none;
+
+		.nav-link,
+		.navbar-brand {
+			color: $bm-mint-100;
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// Card
+	// -------------------------------------------------------------------------
+	.page-card {
+		background-color: var(--bm-card-bg);
+		color: var(--text-color);
+		max-width: 400px;
+		padding: 32px;
+		border-radius: $bm-radius-modal;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		box-shadow:
+			0 0 0 1px rgba(10, 36, 32, 0.4),
+			0 24px 64px -16px rgba(0, 0, 0, 0.55),
+			0 0 80px -20px rgba(64, 192, 156, 0.25);
+		font-family: $bm-font-stack;
+
+		@media (max-width: 575.98px) {
+			// Frappe makes the card full-screen on phones; keep that, flatten it.
+			max-width: 100%;
+			border-radius: 0;
+			border: none;
+			box-shadow: none;
+			padding: 56px 24px 32px;
+		}
+	}
+
+	.page-card-head {
+		gap: 20px;
+
+		img.app-logo {
+			max-height: 36px;
+		}
+
+		h4 {
+			font-family: $bm-font-stack;
+			font-size: 22px;
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			color: var(--heading-color);
+		}
+
+		.page-card-subtitle {
+			color: var(--ink-gray-6);
+			letter-spacing: normal;
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// Fields
+	// -------------------------------------------------------------------------
+	.page-card .page-card-body {
+		.form-label {
+			color: var(--text-color);
+			font-weight: 500;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"] {
+			height: 36px;
+			border-radius: $bm-radius-control;
+			border: 1px solid var(--outline-gray-2);
+			background-color: var(--surface-white);
+			color: var(--text-color);
+			transition:
+				border-color $bm-duration $bm-ease,
+				box-shadow $bm-duration $bm-ease;
+
+			&:hover {
+				border-color: $bm-gray-500;
+			}
+
+			&:focus {
+				outline: none;
+				border-color: $bm-mint-400;
+				box-shadow: 0 0 0 3px rgba(64, 192, 156, 0.35);
+			}
+		}
+
+		.forgot-password-message > * {
+			color: $bm-mint-700;
+			font-weight: 500;
+
+			&:hover {
+				color: $bm-mint-800;
+			}
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// Actions: mint primary with dark label (7.2:1)
+	// -------------------------------------------------------------------------
+	.page-card .page-card-actions {
+		.btn-login,
+		.btn-ldap-login,
+		.btn-signup:not(:disabled) {
+			height: 38px;
+			background: $bm-mint-400;
+			color: $bm-mint-950;
+			font-family: $bm-font-stack;
+			font-weight: 600;
+			border-radius: $bm-radius-control;
+			transition:
+				background-color $bm-duration $bm-ease,
+				box-shadow $bm-duration $bm-ease;
+
+			&:hover,
+			&:active {
+				background: $bm-mint-500;
+				color: $bm-mint-950;
+			}
+
+			&:focus-visible {
+				background: $bm-mint-400;
+				color: $bm-mint-950;
+				box-shadow: 0 0 0 3px rgba(64, 192, 156, 0.45);
+			}
+
+			&:disabled {
+				background: $bm-mint-400;
+				color: $bm-mint-950;
+				opacity: 0.6;
+			}
+		}
+
+		// Social / "Login with email link" options: quiet bordered buttons
+		.btn-login-option {
+			height: 38px;
+			background: var(--bm-card-bg);
+			color: var(--text-color);
+			box-shadow: inset 0 0 0 1px var(--outline-gray-2);
+			border-radius: $bm-radius-control;
+
+			&:hover {
+				background: var(--surface-gray-2);
+			}
+
+			&:focus-visible {
+				box-shadow:
+					inset 0 0 0 1px var(--outline-gray-2),
+					0 0 0 3px rgba(64, 192, 156, 0.35);
+			}
+		}
+	}
+
+	.page-card .sign-up-message a {
+		color: $bm-mint-700;
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Dark card (OS preference)
+// -----------------------------------------------------------------------------
+@media (prefers-color-scheme: dark) {
+	#{$bm-login-scope} {
+		.page-card {
+			--bm-card-bg: #{$bm-dark-card};
+			--heading-color: #{$bm-dark-text};
+			--text-color: #{$bm-dark-text};
+			--ink-gray-4: #6f837c;
+			--ink-gray-5: #{$bm-dark-muted};
+			--ink-gray-6: #{$bm-dark-muted};
+			--surface-white: #{$bm-dark-surface};
+			--surface-gray-2: #{$bm-dark-subtle};
+			--outline-gray-2: #{$bm-dark-border-strong};
+			border-color: $bm-dark-border;
+		}
+
+		.page-card .page-card-body .forgot-password-message > *,
+		.page-card .sign-up-message a {
+			color: $bm-mint-300;
+		}
+
+		.page-card .page-card-body input:hover {
+			border-color: $bm-dark-muted;
+		}
+
+		.page-card .page-card-actions .btn-login:hover,
+		.page-card .page-card-actions .btn-ldap-login:hover {
+			background: $bm-mint-300;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#{$bm-login-scope} {
+		*,
+		*::before,
+		*::after {
+			// Frappe's .invalid-login "wiggle" keyframes and our transitions
+			animation: none !important;
+			transition: none !important;
+		}
+	}
+}

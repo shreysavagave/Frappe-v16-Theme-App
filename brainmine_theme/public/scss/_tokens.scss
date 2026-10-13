@@ -1,0 +1,216 @@
+// =============================================================================
+// Brainmine Theme — design tokens
+// -----------------------------------------------------------------------------
+// The ONE place to change the brand. Everything else (desk, login) reads the
+// --bm-* custom properties emitted at the bottom of this file.
+//
+// To rebrand: replace the mint scale below with a 50–950 scale built around the
+// new brand color (400 = brand). Keep the "on-brand" text dark if the brand is
+// light (check contrast ≥ 4.5:1 for button labels).
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Brand scale (mint, 400 = #40C09C)
+// -----------------------------------------------------------------------------
+$bm-mint-50: #edfaf5;
+$bm-mint-100: #d3f3e8;
+$bm-mint-200: #a8e6d2;
+$bm-mint-300: #74d6b8;
+$bm-mint-400: #40c09c; // brand
+$bm-mint-500: #2fa684;
+$bm-mint-600: #23866b;
+$bm-mint-700: #1e6b57;
+$bm-mint-800: #1a5447;
+$bm-mint-900: #14403a;
+$bm-mint-950: #0a2420;
+
+$bm-brand: $bm-mint-400;
+
+// Brand gradient (light green → mint). Used for the active sidebar item.
+$bm-gradient-start: #62d16b;
+$bm-gradient-end: $bm-mint-400;
+$bm-gradient: linear-gradient(135deg, #{$bm-gradient-start} 0%, #{$bm-gradient-end} 100%);
+$bm-gradient-bar: linear-gradient(90deg, #{$bm-gradient-end} 0%, #{$bm-gradient-start} 100%); // wide bars (navbars): mint → green, reversed from $bm-gradient
+$bm-on-gradient: #ffffff; // per brand request — note: 1.9–2.3:1 contrast
+$bm-wordmark: "Brainmine.AI"; // co-brand shown next to the client logo in the navbars
+$bm-logo-url: "/assets/brainmine_theme/images/brainmine-logo-white.png"; // public/images — white mark for the gradient bars
+
+// -----------------------------------------------------------------------------
+// Neutrals — light (slightly green-tinted, never pure gray)
+// -----------------------------------------------------------------------------
+$bm-light-page: #f5f8f7;
+$bm-light-surface: #ffffff;
+$bm-light-subtle: #eef3f1;
+$bm-light-border: #e3eae7;
+$bm-light-border-strong: #cbd7d3;
+$bm-light-text: #12201d;
+$bm-light-muted: #5b6b67;
+
+// Extended tinted gray ramp used to re-map Frappe's --gray-* scale so every
+// component that still reads a gray picks up the same green undertone.
+$bm-gray-400: #aebdb8;
+$bm-gray-500: #8fa39c;
+$bm-gray-600: #6b7c77;
+$bm-gray-700: #44534f;
+$bm-gray-800: #2a3835;
+
+// -----------------------------------------------------------------------------
+// Neutrals — dark
+// -----------------------------------------------------------------------------
+$bm-dark-page: #0c1513;
+$bm-dark-surface: #121d1a;
+$bm-dark-card: #16231f;
+$bm-dark-subtle: #1a2925; // hover / subtle fills
+$bm-dark-raised: #1f302b; // modals' controls, selected rows
+$bm-dark-border: #24352f;
+$bm-dark-border-strong: #334a43;
+$bm-dark-text: #e6efec;
+$bm-dark-muted: #8fa39c;
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+$bm-font-stack: "Manrope", "InterVariable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+	Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// -----------------------------------------------------------------------------
+// Shape — radius by hierarchy
+// -----------------------------------------------------------------------------
+$bm-radius-xs: 4px; // checkboxes, kbd hints
+$bm-radius-control: 8px; // inputs, buttons, sidebar items
+$bm-radius-card: 12px; // cards, widgets, dropdowns
+$bm-radius-modal: 16px; // modals, login card
+$bm-radius-pill: 999px; // indicator pills, badges
+
+// -----------------------------------------------------------------------------
+// Motion
+// -----------------------------------------------------------------------------
+$bm-ease: cubic-bezier(0.2, 0, 0, 1);
+$bm-duration: 120ms;
+
+// -----------------------------------------------------------------------------
+// Custom properties
+// Selectors are (0,1,1) so they beat Frappe's `:root` / `[data-theme]` (0,1,0)
+// without !important, and they key off the attribute Frappe's own theme
+// switcher sets, so Light / Dark / Automatic keep working.
+// -----------------------------------------------------------------------------
+@mixin bm-tokens-light {
+	--bm-mint-50: #{$bm-mint-50};
+	--bm-mint-100: #{$bm-mint-100};
+	--bm-mint-200: #{$bm-mint-200};
+	--bm-mint-300: #{$bm-mint-300};
+	--bm-mint-400: #{$bm-mint-400};
+	--bm-mint-500: #{$bm-mint-500};
+	--bm-mint-600: #{$bm-mint-600};
+	--bm-mint-700: #{$bm-mint-700};
+	--bm-mint-800: #{$bm-mint-800};
+	--bm-mint-900: #{$bm-mint-900};
+	--bm-mint-950: #{$bm-mint-950};
+
+	--bm-page: #{$bm-light-page};
+	--bm-surface: #{$bm-light-surface};
+	--bm-card: #{$bm-light-surface};
+	--bm-subtle: #{$bm-light-subtle};
+	--bm-hover: #{$bm-light-subtle};
+	--bm-border: #{$bm-light-border};
+	--bm-border-strong: #{$bm-light-border-strong};
+	--bm-text: #{$bm-light-text};
+	--bm-muted: #{$bm-light-muted};
+
+	// Primary action: mint fill with DARK label (white on #40C09C is 2.3:1).
+	--bm-primary-bg: #{$bm-mint-400};
+	--bm-primary-bg-hover: #{$bm-mint-500};
+	--bm-primary-bg-active: #{$bm-mint-600};
+	--bm-on-primary: #{$bm-mint-950}; // 7.2:1 on 400, 5.4:1 on 500
+
+	// Mint as text on light surfaces.
+	// #23866B measures 4.47:1 on white (4.19:1 on the page bg) — just under
+	// WCAG AA for body text — so text links use 700 (6.4:1). 600 is kept for
+	// non-text accents (indicator bar, checkbox fill) where 3:1 is the bar.
+	--bm-link: #{$bm-mint-700};
+	--bm-link-hover: #{$bm-mint-800};
+	--bm-accent: #{$bm-mint-600};
+
+	// Selected / active surfaces
+	--bm-selected-bg: #{$bm-mint-50};
+	--bm-selected-text: #{$bm-mint-700};
+	--bm-selected-bar: #{$bm-mint-400};
+
+	// Brand gradient surface (active sidebar item)
+	--bm-gradient: #{$bm-gradient};
+	--bm-gradient-bar: #{$bm-gradient-bar};
+	--bm-on-gradient: #{$bm-on-gradient};
+
+	// Focus ring (keyboard)
+	--bm-ring: 0 0 0 3px rgba(64, 192, 156, 0.35);
+	--bm-ring-inset-border: inset 0 0 0 1px #{$bm-mint-400};
+
+	// Soft, low, green-tinted elevation — floating layers only.
+	--bm-shadow-sm: 0 1px 2px rgba(10, 36, 32, 0.06);
+	--bm-shadow-md: 0 1px 2px rgba(10, 36, 32, 0.05), 0 4px 12px -2px rgba(10, 36, 32, 0.08);
+	--bm-shadow-lg: 0 0 0 1px rgba(10, 36, 32, 0.04), 0 2px 4px rgba(10, 36, 32, 0.04),
+		0 12px 32px -6px rgba(10, 36, 32, 0.14);
+	--bm-shadow-xl: 0 0 0 1px rgba(10, 36, 32, 0.05), 0 4px 8px rgba(10, 36, 32, 0.04),
+		0 24px 48px -12px rgba(10, 36, 32, 0.22);
+
+	--bm-scrollbar: rgba(18, 32, 29, 0.18);
+	--bm-scrollbar-hover: rgba(18, 32, 29, 0.32);
+
+	--bm-font: #{$bm-font-stack};
+	--bm-radius-xs: #{$bm-radius-xs};
+	--bm-radius-control: #{$bm-radius-control};
+	--bm-radius-card: #{$bm-radius-card};
+	--bm-radius-modal: #{$bm-radius-modal};
+	--bm-radius-pill: #{$bm-radius-pill};
+	--bm-ease: #{$bm-ease};
+	--bm-duration: #{$bm-duration};
+}
+
+@mixin bm-tokens-dark {
+	--bm-page: #{$bm-dark-page};
+	--bm-surface: #{$bm-dark-surface};
+	--bm-card: #{$bm-dark-card};
+	--bm-subtle: #{$bm-dark-subtle};
+	--bm-hover: #{$bm-dark-subtle};
+	--bm-border: #{$bm-dark-border};
+	--bm-border-strong: #{$bm-dark-border-strong};
+	--bm-text: #{$bm-dark-text};
+	--bm-muted: #{$bm-dark-muted};
+
+	--bm-primary-bg: #{$bm-mint-400};
+	--bm-primary-bg-hover: #{$bm-mint-300};
+	--bm-primary-bg-active: #{$bm-mint-200};
+	--bm-on-primary: #{$bm-mint-950};
+
+	--bm-link: #{$bm-mint-400}; // 7.6:1 on surface
+	--bm-link-hover: #{$bm-mint-300};
+	--bm-accent: #{$bm-mint-400};
+
+	// mint-950 tint for the active item, readable mint label on top
+	--bm-selected-bg: rgba(64, 192, 156, 0.12);
+	--bm-selected-text: #{$bm-mint-300};
+	--bm-selected-bar: #{$bm-mint-400};
+
+	--bm-ring: 0 0 0 3px rgba(64, 192, 156, 0.4);
+
+	--bm-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--bm-shadow-md: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 4px 12px -2px rgba(0, 0, 0, 0.45);
+	--bm-shadow-lg: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 12px 32px -6px rgba(0, 0, 0, 0.55);
+	--bm-shadow-xl: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+
+	--bm-scrollbar: rgba(230, 239, 236, 0.14);
+	--bm-scrollbar-hover: rgba(230, 239, 236, 0.26);
+}
+
+// Light tokens apply everywhere except explicit dark mode (website pages have
+// no data-theme attribute, so they get light by default).
+html:not([data-theme="dark"]) {
+	@include bm-tokens-light;
+}
+
+// Dark inherits the scale/shape tokens from the light block's mixin, then
+// overrides the semantic ones.
+html[data-theme="dark"] {
+	@include bm-tokens-light;
+	@include bm-tokens-dark;
+}
