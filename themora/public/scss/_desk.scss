@@ -1660,3 +1660,147 @@ html {
 		scroll-behavior: auto !important;
 	}
 }
+
+// -----------------------------------------------------------------------------
+// 19. Announcement bar (announcements.js) — top of .main-section, the full
+// width of the workspace right of the sidebar. In normal flow inside the
+// scroll container, so it scrolls away and the sticky page bar keeps `top: 0`.
+// Solid fills with a label color that clears 4.5:1 in light and dark.
+// -----------------------------------------------------------------------------
+html {
+	.tm-announcement {
+		--tm-ann-bg: #2563eb;
+		--tm-ann-text: #ffffff;
+		--tm-ann-text-rgb: 255, 255, 255;
+
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		min-height: 40px;
+		padding: 8px 12px 8px 20px;
+		background: var(--tm-ann-bg);
+		color: var(--tm-ann-text);
+		font-family: var(--tm-font);
+		font-size: 13px;
+		line-height: 1.4;
+
+		&.tm-announcement-success {
+			--tm-ann-bg: #15803d;
+		}
+
+		&.tm-announcement-warning {
+			--tm-ann-bg: #fbbf24;
+			--tm-ann-text: #3b2a02;
+			--tm-ann-text-rgb: 59, 42, 2;
+		}
+
+		&.tm-announcement-danger {
+			--tm-ann-bg: #dc2626;
+		}
+
+		&.tm-announcement-brand {
+			--tm-ann-bg: var(--tm-gradient-bar);
+			--tm-ann-text: var(--tm-on-gradient);
+			--tm-ann-text-rgb: var(--tm-on-gradient-rgb);
+		}
+
+		.tm-announcement-body {
+			display: flex;
+			flex: 1;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			gap: 4px 12px;
+			min-width: 0;
+			text-align: center;
+		}
+
+		.tm-announcement-icon {
+			flex-shrink: 0;
+			width: 16px;
+			height: 16px;
+		}
+
+		.tm-announcement-text {
+			font-weight: 500;
+		}
+
+		.tm-announcement-link {
+			color: inherit;
+			font-weight: 700;
+			text-decoration: underline;
+			text-underline-offset: 2px;
+			white-space: nowrap;
+
+			&:hover {
+				text-decoration-thickness: 2px;
+			}
+		}
+
+		svg {
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+
+		.tm-announcement-pager {
+			display: flex;
+			flex-shrink: 0;
+			align-items: center;
+			gap: 2px;
+			font-size: 12px;
+			font-variant-numeric: tabular-nums;
+
+			button {
+				width: 24px;
+				height: 24px;
+				border-radius: var(--tm-radius-control);
+				color: inherit;
+				font-size: 16px;
+				line-height: 1;
+			}
+		}
+
+		.tm-announcement-close {
+			display: inline-flex;
+			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
+			width: 28px;
+			height: 28px;
+			border-radius: var(--tm-radius-control);
+			color: inherit;
+
+			svg {
+				width: 16px;
+				height: 16px;
+			}
+		}
+
+		.tm-announcement-pager button,
+		.tm-announcement-close {
+			&:hover {
+				background: rgba(var(--tm-ann-text-rgb), 0.16);
+			}
+
+			&:focus-visible {
+				outline: none;
+				box-shadow: 0 0 0 2px rgba(var(--tm-ann-text-rgb), 0.7);
+			}
+		}
+
+		a:focus-visible {
+			outline: 2px solid currentColor;
+			outline-offset: 2px;
+			border-radius: 2px;
+		}
+	}
+
+	@media print {
+		.tm-announcement {
+			display: none;
+		}
+	}
+}

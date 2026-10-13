@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "creation": "2026-10-14 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "title",
+  "message",
+  "column_break_main",
+  "style",
+  "dismissible",
+  "link_section",
+  "link_label",
+  "column_break_link",
+  "link_url",
+  "schedule_section",
+  "start",
+  "column_break_schedule",
+  "end",
+  "audience_section",
+  "roles"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "For your reference in this list. Not shown to users."
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message",
+   "reqd": 1,
+   "description": "Plain text shown in the bar at the top of the Desk. Keep it to one line."
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "style",
+   "fieldtype": "Select",
+   "label": "Style",
+   "options": "Info\nSuccess\nWarning\nDanger\nBrand",
+   "default": "Info",
+   "in_list_view": 1,
+   "description": "Brand uses the navbar gradient and text color."
+  },
+  {
+   "fieldname": "dismissible",
+   "fieldtype": "Check",
+   "label": "Users Can Dismiss",
+   "default": "1",
+   "description": "Shows a close button. A dismissed announcement comes back if you edit it."
+  },
+  {
+   "fieldname": "link_section",
+   "fieldtype": "Section Break",
+   "label": "Link"
+  },
+  {
+   "fieldname": "link_label",
+   "fieldtype": "Data",
+   "label": "Link Text",
+   "description": "E.g. Read more"
+  },
+  {
+   "fieldname": "column_break_link",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "link_url",
+   "fieldtype": "Data",
+   "label": "Link URL",
+   "options": "URL",
+   "depends_on": "link_label",
+   "mandatory_depends_on": "link_label",
+   "description": "https://\u2026 or a Desk path like /desk/todo"
+  },
+  {
+   "fieldname": "schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule",
+   "description": "Leave empty to show it right away and until you disable it."
+  },
+  {
+   "fieldname": "start",
+   "fieldtype": "Datetime",
+   "label": "Show From",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_schedule",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end",
+   "fieldtype": "Datetime",
+   "label": "Show Until",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "audience_section",
+   "fieldtype": "Section Break",
+   "label": "Audience"
+  },
+  {
+   "fieldname": "roles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Show to Roles",
+   "options": "Themora Announcement Role",
+   "description": "Leave empty to show to every Desk user."
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Themora",
+ "name": "Themora Announcement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash",
+ "title_field": "title",
+ "show_title_field_in_link": 1,
+ "description": "Messages shown in a bar at the top of the Desk (Themora).",
+ "track_changes": 1
+}

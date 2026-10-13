@@ -24,4 +24,4 @@ after_install = "themora.install.after_install"
 extend_bootinfo = "themora.theme.extend_bootinfo"
 
 # `bench clear-cache` / frappe.clear_cache() also drops the generated theme CSS.
-clear_cache = "themora.theme.clear_cache"
+clear_cache = ["themora.theme.clear_cache", "themora.announcements.clear_cache"]

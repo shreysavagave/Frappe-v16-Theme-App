@@ -29,6 +29,7 @@ frappe.ui.form.on("Themora Settings", {
 				frm.set_value(THEMORA_COLOR_DEFAULTS);
 			});
 		});
+		frm.add_custom_button(__("Announcements"), () => frappe.set_route("List", "Themora Announcement"));
 		themora_render_preview(frm);
 	},
 

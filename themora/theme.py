@@ -46,6 +46,7 @@ DEFAULTS = {
 	"show_theme_toggle": 1,
 	"show_recent_documents": 1,
 	"recent_documents_limit": 15,
+	"show_announcements": 1,
 	"custom_css": "",
 }
 
@@ -170,6 +171,7 @@ def get_boot_info() -> dict:
 		"show_theme_toggle": bool(s.show_theme_toggle),
 		"show_recent_documents": bool(s.show_recent_documents),
 		"recent_documents_limit": max(5, min(int(s.recent_documents_limit or 15), 30)),
+		"show_announcements": bool(s.show_announcements),
 	}
 
 

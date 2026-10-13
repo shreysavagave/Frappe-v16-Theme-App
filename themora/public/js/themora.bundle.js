@@ -2,11 +2,13 @@
 //  - <meta name="theme-color"> so mobile browser chrome matches the brand
 //  - `tm-theme` class on <body> as a styling hook
 //  - Footer in Desk's own empty <footer> (Desk only)
+//  - Announcement bar above the Desk (announcements.js, Desk only)
 //  - Bar tools in the Desk bars (Desk only): recent documents
 //    (recent_documents.js) and a one-click light/dark theme button
 // Footer and bar tools follow Themora Settings, passed in as frappe.boot.themora
 // (themora/theme.py → get_boot_info). Colors come from the theme CSS.
 
+import { init_announcements } from "./announcements";
 import { init_recent_documents, make_recent_button } from "./recent_documents";
 
 (function () {
@@ -183,6 +185,7 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 		if (in_desk()) {
 			add_footer();
 			const s = settings();
+			if (s.show_announcements !== false) init_announcements();
 			if (s.show_recent_documents !== false) init_recent_documents();
 			if (s.show_recent_documents !== false || s.show_theme_toggle !== false) watch_for_bars();
 		}
