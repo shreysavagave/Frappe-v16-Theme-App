@@ -2,9 +2,12 @@
 //  - <meta name="theme-color"> so mobile browser chrome matches the brand
 //  - `tm-theme` class on <body> as a styling hook
 //  - Footer in Desk's own empty <footer> (Desk only)
-//  - One-click light/dark theme button in the Desk bars (Desk only)
-// Footer and toggle follow Themora Settings, passed in as frappe.boot.themora
+//  - Bar tools in the Desk bars (Desk only): recent documents
+//    (recent_documents.js) and a one-click light/dark theme button
+// Footer and bar tools follow Themora Settings, passed in as frappe.boot.themora
 // (themora/theme.py → get_boot_info). Colors come from the theme CSS.
+
+import { init_recent_documents, make_recent_button } from "./recent_documents";
 
 (function () {
 	const t = (text) => (window.__ ? window.__(text) : text);
@@ -59,43 +62,53 @@
 	function make_toggle(extra_class) {
 		const btn = document.createElement("button");
 		btn.type = "button";
-		btn.className = `btn-reset tm-theme-toggle ${extra_class}`;
+		btn.className = `btn-reset tm-bar-btn tm-theme-toggle ${extra_class}`;
 		btn.innerHTML = ICON_MOON + ICON_SUN;
 		btn.addEventListener("click", toggle_theme);
 		return btn;
 	}
 
+	// --- Bar tools ------------------------------------------------------------
+	// The enabled buttons, in display order, for one bar ("page" or "home").
+	function make_bar_tools(where) {
+		const s = settings();
+		const tools = [];
+		if (s.show_recent_documents !== false) tools.push(make_recent_button(`tm-bar-btn-${where}`));
+		if (s.show_theme_toggle !== false) tools.push(make_toggle(`tm-bar-btn-${where}`));
+		return tools;
+	}
+
 	// Pages (and their .page-head) are built lazily as you navigate, so new
 	// bars are picked up by a debounced MutationObserver.
-	function add_toggles() {
+	function add_bar_tools() {
 		document
-			.querySelectorAll(".page-head .standard-actions:not([data-tm-toggle])")
+			.querySelectorAll(".page-head .standard-actions:not([data-tm-tools])")
 			.forEach((actions) => {
-				actions.setAttribute("data-tm-toggle", "");
-				actions.prepend(make_toggle("tm-theme-toggle-page"));
+				actions.setAttribute("data-tm-tools", "");
+				actions.prepend(...make_bar_tools("page"));
 			});
 
 		document
-			.querySelectorAll("header.desktop-navbar:not([data-tm-toggle])")
+			.querySelectorAll("header.desktop-navbar:not([data-tm-tools])")
 			.forEach((bar) => {
 				const bell = bar.querySelector(".desktop-notifications");
 				if (!bell) return;
-				bar.setAttribute("data-tm-toggle", "");
-				bell.before(make_toggle("tm-theme-toggle-home"));
+				bar.setAttribute("data-tm-tools", "");
+				bell.before(...make_bar_tools("home"));
 			});
 
 		sync_toggles();
 	}
 
 	function watch_for_bars() {
-		add_toggles();
+		add_bar_tools();
 		let queued = false;
 		new MutationObserver(() => {
 			if (queued) return;
 			queued = true;
 			requestAnimationFrame(() => {
 				queued = false;
-				add_toggles();
+				add_bar_tools();
 			});
 		}).observe(document.body, { childList: true, subtree: true });
 
@@ -169,7 +182,9 @@
 
 		if (in_desk()) {
 			add_footer();
-			if (settings().show_theme_toggle !== false) watch_for_bars();
+			const s = settings();
+			if (s.show_recent_documents !== false) init_recent_documents();
+			if (s.show_recent_documents !== false || s.show_theme_toggle !== false) watch_for_bars();
 		}
 	}
 

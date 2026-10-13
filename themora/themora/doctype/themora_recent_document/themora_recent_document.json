@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "creation": "2026-10-13 18:00:00.000000",
+ "doctype": "DocType",
+ "description": "Documents each user opened recently. Shown in the Recent menu on the Desk navbar (Themora).",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "reference_doctype",
+  "reference_name",
+  "column_break_1",
+  "last_opened",
+  "open_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "options": "DocType",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document",
+   "options": "reference_doctype",
+   "in_list_view": 1,
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_opened",
+   "fieldtype": "Datetime",
+   "label": "Last Opened",
+   "in_list_view": 1,
+   "search_index": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "open_count",
+   "fieldtype": "Int",
+   "label": "Times Opened",
+   "default": "1",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2026-10-13 18:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Themora",
+ "name": "Themora Recent Document",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "last_opened",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "reference_name"
+}

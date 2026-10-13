@@ -38,6 +38,9 @@ class ThemoraSettings(Document):
 
 		self.warn_low_contrast()
 
+		if self.recent_documents_limit is not None:
+			self.recent_documents_limit = max(5, min(self.recent_documents_limit, 30))
+
 	def warn_low_contrast(self):
 		text = self.navbar_text_color or theme.DEFAULTS["navbar_text_color"]
 		backgrounds = [self.gradient_start or theme.DEFAULTS["gradient_start"]]

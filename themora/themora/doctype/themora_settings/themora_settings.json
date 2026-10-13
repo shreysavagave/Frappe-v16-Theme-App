@@ -55,6 +55,8 @@
   "advanced_tab",
   "desk_section",
   "show_theme_toggle",
+  "show_recent_documents",
+  "recent_documents_limit",
   "custom_css_section",
   "custom_css"
  ],
@@ -348,7 +350,7 @@
   {
    "fieldname": "desk_section",
    "fieldtype": "Section Break",
-   "label": "Desk"
+   "label": "Navbar Tools"
   },
   {
    "fieldname": "show_theme_toggle",
@@ -356,6 +358,21 @@
    "label": "Show Light / Dark Toggle",
    "default": "1",
    "description": "Moon / sun button in the navbar and page bars."
+  },
+  {
+   "fieldname": "show_recent_documents",
+   "fieldtype": "Check",
+   "label": "Show Recent Documents",
+   "default": "1",
+   "description": "Clock button in the navbar and page bars listing the documents each user opened last (shortcut: Alt+R). History follows the user across devices."
+  },
+  {
+   "fieldname": "recent_documents_limit",
+   "fieldtype": "Int",
+   "label": "Recent Documents to Show",
+   "default": "15",
+   "depends_on": "show_recent_documents",
+   "description": "Between 5 and 30."
   },
   {
    "fieldname": "custom_css_section",
@@ -372,7 +389,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-10-13 12:00:00.000000",
+ "modified": "2026-10-13 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "Themora",
  "name": "Themora Settings",

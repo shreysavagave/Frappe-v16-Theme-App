@@ -3,3 +3,4 @@
 
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
+themora.patches.v0_2.seed_recent_documents_settings
