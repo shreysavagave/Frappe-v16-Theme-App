@@ -1,6 +1,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import cint
 
 from themora import theme
 
@@ -38,8 +39,11 @@ class ThemoraSettings(Document):
 
 		self.warn_low_contrast()
 
-		if self.recent_documents_limit is not None:
-			self.recent_documents_limit = max(5, min(self.recent_documents_limit, 30))
+		self.recent_documents_limit = max(5, min(cint(self.recent_documents_limit) or 10, 30))
+		self.recent_documents_keep = max(10, min(cint(self.recent_documents_keep) or 30, 100))
+		if self.recent_documents_keep < self.recent_documents_limit:
+			# Can't show more than are kept.
+			self.recent_documents_keep = self.recent_documents_limit
 
 	def warn_low_contrast(self):
 		text = self.navbar_text_color or theme.DEFAULTS["navbar_text_color"]

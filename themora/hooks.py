@@ -25,3 +25,12 @@ extend_bootinfo = "themora.theme.extend_bootinfo"
 
 # `bench clear-cache` / frappe.clear_cache() also drops the generated theme CSS.
 clear_cache = ["themora.theme.clear_cache", "themora.announcements.clear_cache"]
+
+# Keeps Themora Recent Document bounded (see themora/recent.py).
+scheduler_events = {"daily": ["themora.recent.daily_cleanup"]}
+
+# Recent-document rows must never block deleting a document (or a User): an
+# admin may delete anything other users happen to have opened. Frappe's own
+# View Log is listed in this hook for the same reason. Rows pointing at deleted
+# documents are dropped the next time the user opens the panel.
+ignore_links_on_delete = ["Themora Recent Document"]

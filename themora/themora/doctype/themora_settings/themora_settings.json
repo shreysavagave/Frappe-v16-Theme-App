@@ -57,6 +57,7 @@
   "show_theme_toggle",
   "show_recent_documents",
   "recent_documents_limit",
+  "recent_documents_keep",
   "show_announcements",
   "custom_css_section",
   "custom_css"
@@ -365,15 +366,23 @@
    "fieldtype": "Check",
    "label": "Show Recent Documents",
    "default": "1",
-   "description": "Clock button in the navbar and page bars listing the documents each user opened last (shortcut: Alt+R). History follows the user across devices."
+   "description": "Clock button in the navbar and page bars listing the documents each user opened last (shortcut: Alt+R). History is stored per user on the server, so it follows them across devices."
   },
   {
    "fieldname": "recent_documents_limit",
    "fieldtype": "Int",
-   "label": "Recent Documents to Show",
-   "default": "15",
+   "label": "Shown in the Panel",
+   "default": "10",
    "depends_on": "show_recent_documents",
-   "description": "Between 5 and 30."
+   "description": "How many recent documents the panel lists (5 to 30)."
+  },
+  {
+   "fieldname": "recent_documents_keep",
+   "fieldtype": "Int",
+   "label": "Kept per User",
+   "default": "30",
+   "depends_on": "show_recent_documents",
+   "description": "How many documents are remembered per user and searched by the panel's filter (10 to 100). Older ones are removed automatically, so storage never exceeds users × this number."
   },
   {
    "fieldname": "show_announcements",
@@ -397,7 +406,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-10-14 10:00:00.000000",
+ "modified": "2026-10-14 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Themora",
  "name": "Themora Settings",

@@ -2,6 +2,8 @@
 // list of the documents the user opened last (server side: themora/recent.py).
 //  - Every saved form the user opens is recorded (at most once a minute per doc).
 //  - The list follows the user across browsers and devices.
+//  - Shows the latest "Shown in the Panel" documents; the filter searches all
+//    "Kept per User" documents (both in Themora Settings).
 //  - Alt+R opens it from anywhere; ↑ / ↓ / Enter / Esc work inside it.
 
 const t = (text) => (window.__ ? window.__(text) : text);
@@ -12,7 +14,7 @@ const TRACK_EVERY_MS = 60 * 1000;
 
 let panel = null;
 let anchor = null; // the button the panel is open for
-let items = []; // last list from the server
+let items = []; // every kept document, newest first, from the server
 let active = -1; // keyboard-highlighted row in the filtered list
 const last_tracked = new Map(); // "doctype\0name" → timestamp
 
@@ -80,7 +82,7 @@ function build_panel() {
 
 function filtered() {
 	const q = (panel.querySelector(".tm-recent-search").value || "").trim().toLowerCase();
-	if (!q) return items;
+	if (!q) return items.slice(0, settings().recent_documents_limit || 10);
 	return items.filter((d) => `${d.title} ${d.name} ${d.doctype_label}`.toLowerCase().includes(q));
 }
 
@@ -137,9 +139,7 @@ function position() {
 async function load() {
 	render("loading");
 	try {
-		items = await frappe.xcall("themora.recent.get", {
-			limit: settings().recent_documents_limit || 15,
-		});
+		items = await frappe.xcall("themora.recent.get");
 		active = items.length ? 0 : -1;
 		render();
 	} catch {
