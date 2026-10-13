@@ -1,0 +1,5 @@
+// Themora — Desk bundle (hooks: app_include_css = "themora_desk.bundle.css")
+// The web font is imported by the runtime CSS (themora.api.theme_css), which
+// follows the Font setting in Themora Settings.
+@import "./tokens";
+@import "./desk";

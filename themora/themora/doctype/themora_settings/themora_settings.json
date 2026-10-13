@@ -1,0 +1,396 @@
+{
+ "actions": [],
+ "creation": "2026-10-13 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "brand_tab",
+  "identity_section",
+  "brand_name",
+  "show_brand_name",
+  "show_cobrand_on_page_bar",
+  "column_break_brand",
+  "brand_logo",
+  "show_brand_logo",
+  "frappe_branding_section",
+  "app_title",
+  "app_logo",
+  "column_break_identity",
+  "favicon",
+  "splash_image",
+  "colors_tab",
+  "preview_section",
+  "color_preview",
+  "primary_section",
+  "primary_color",
+  "button_text_color",
+  "column_break_primary",
+  "neutral_tint",
+  "login_background",
+  "navbar_section",
+  "navbar_style",
+  "gradient_start",
+  "gradient_end",
+  "column_break_navbar",
+  "navbar_text_color",
+  "typography_tab",
+  "typography_section",
+  "font_family",
+  "column_break_typography",
+  "corner_style",
+  "footer_tab",
+  "footer_section",
+  "show_footer",
+  "use_custom_footer",
+  "footer_fields_section",
+  "footer_copyright",
+  "powered_by_label",
+  "powered_by_name",
+  "powered_by_url",
+  "column_break_footer",
+  "footer_link_label",
+  "footer_link_url",
+  "custom_footer_section",
+  "custom_footer_html",
+  "advanced_tab",
+  "desk_section",
+  "show_theme_toggle",
+  "custom_css_section",
+  "custom_css"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand_tab",
+   "fieldtype": "Tab Break",
+   "label": "Brand"
+  },
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Navbar Brand",
+   "description": "Logo and name shown on the navbar, next to the app logo and on every page bar."
+  },
+  {
+   "fieldname": "brand_name",
+   "fieldtype": "Data",
+   "label": "Brand Name",
+   "description": "E.g. your company name. Also used as the footer's \"Powered by\" name unless you set one."
+  },
+  {
+   "fieldname": "show_brand_name",
+   "fieldtype": "Check",
+   "label": "Show Brand Name",
+   "default": "1"
+  },
+  {
+   "fieldname": "show_cobrand_on_page_bar",
+   "fieldtype": "Check",
+   "label": "Show on Page Bars",
+   "default": "1",
+   "description": "Also show the logo and name in the bar at the top of every page (hidden on small screens)."
+  },
+  {
+   "fieldname": "column_break_brand",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "brand_logo",
+   "fieldtype": "Attach Image",
+   "label": "Brand Logo",
+   "description": "Square mark, shown at 22px. It sits on the navbar color, so use a light / white version on dark colors."
+  },
+  {
+   "fieldname": "show_brand_logo",
+   "fieldtype": "Check",
+   "label": "Show Brand Logo",
+   "default": "1"
+  },
+  {
+   "fieldname": "frappe_branding_section",
+   "fieldtype": "Section Break",
+   "label": "App Identity",
+   "description": "Saved to Website Settings and Navbar Settings when changed here."
+  },
+  {
+   "fieldname": "app_title",
+   "fieldtype": "Data",
+   "label": "App Title",
+   "description": "Browser tab title and app name."
+  },
+  {
+   "fieldname": "app_logo",
+   "fieldtype": "Attach Image",
+   "label": "App Logo",
+   "description": "Login page and sidebar / desktop logo."
+  },
+  {
+   "fieldname": "column_break_identity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "favicon",
+   "fieldtype": "Attach Image",
+   "label": "Favicon",
+   "description": "Browser tab icon (.ico, .png or .svg)."
+  },
+  {
+   "fieldname": "splash_image",
+   "fieldtype": "Attach Image",
+   "label": "Splash Image",
+   "description": "Shown while Desk is loading."
+  },
+  {
+   "fieldname": "colors_tab",
+   "fieldtype": "Tab Break",
+   "label": "Colors"
+  },
+  {
+   "fieldname": "preview_section",
+   "fieldtype": "Section Break",
+   "label": "Preview"
+  },
+  {
+   "fieldname": "color_preview",
+   "fieldtype": "HTML",
+   "label": "Color Preview"
+  },
+  {
+   "fieldname": "primary_section",
+   "fieldtype": "Section Break",
+   "label": "Brand Color"
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary Color",
+   "default": "#40C09C",
+   "description": "Buttons, links, checkboxes, focus rings and selections. A full shade scale is generated from it, and link shades are picked to stay readable."
+  },
+  {
+   "fieldname": "button_text_color",
+   "fieldtype": "Color",
+   "label": "Button Text Color",
+   "description": "Label color on primary buttons. Leave empty to pick white or dark automatically for the best contrast."
+  },
+  {
+   "fieldname": "column_break_primary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "neutral_tint",
+   "fieldtype": "Select",
+   "label": "Background Tint",
+   "options": "Brand Tinted\nNeutral Gray",
+   "default": "Brand Tinted",
+   "description": "Brand Tinted gives the grays, borders and dark mode a hint of the primary color."
+  },
+  {
+   "fieldname": "login_background",
+   "fieldtype": "Color",
+   "label": "Login Page Background",
+   "description": "Leave empty for the darkest shade of the primary color."
+  },
+  {
+   "fieldname": "navbar_section",
+   "fieldtype": "Section Break",
+   "label": "Navbar"
+  },
+  {
+   "fieldname": "navbar_style",
+   "fieldtype": "Select",
+   "label": "Navbar Style",
+   "options": "Gradient\nSolid",
+   "default": "Gradient"
+  },
+  {
+   "fieldname": "gradient_start",
+   "fieldtype": "Color",
+   "label": "Gradient Start",
+   "default": "#62D16B",
+   "description": "With Solid, this is the navbar color."
+  },
+  {
+   "fieldname": "gradient_end",
+   "fieldtype": "Color",
+   "label": "Gradient End",
+   "default": "#40C09C",
+   "depends_on": "eval:doc.navbar_style==\"Gradient\"",
+   "description": "Also fills the sidebar header."
+  },
+  {
+   "fieldname": "column_break_navbar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "navbar_text_color",
+   "fieldtype": "Color",
+   "label": "Navbar Text Color",
+   "default": "#FFFFFF",
+   "description": "Text and icons on the navbar, page bars and the active sidebar item."
+  },
+  {
+   "fieldname": "typography_tab",
+   "fieldtype": "Tab Break",
+   "label": "Typography & Shape"
+  },
+  {
+   "fieldname": "typography_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "font_family",
+   "fieldtype": "Select",
+   "label": "Font",
+   "options": "Manrope\nInter\nPoppins\nRoboto\nOpen Sans\nLato\nNunito\nDM Sans\nPlus Jakarta Sans\nOutfit\nSystem Default",
+   "default": "Manrope",
+   "description": "Loaded from Google Fonts. System Default uses the device's own font and loads nothing."
+  },
+  {
+   "fieldname": "column_break_typography",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "corner_style",
+   "fieldtype": "Select",
+   "label": "Corner Style",
+   "options": "Sharp\nDefault\nRounded",
+   "default": "Default",
+   "description": "Roundness of buttons, inputs, cards and dialogs."
+  },
+  {
+   "fieldname": "footer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Footer"
+  },
+  {
+   "fieldname": "footer_section",
+   "fieldtype": "Section Break",
+   "description": "The bar at the bottom of every Desk page. Use {year} for the current year and {brand} for the Brand Name."
+  },
+  {
+   "fieldname": "show_footer",
+   "fieldtype": "Check",
+   "label": "Show Footer",
+   "default": "1"
+  },
+  {
+   "fieldname": "use_custom_footer",
+   "fieldtype": "Check",
+   "label": "Use Custom HTML",
+   "default": "0",
+   "depends_on": "show_footer",
+   "description": "Replace the whole footer with your own HTML."
+  },
+  {
+   "fieldname": "footer_fields_section",
+   "fieldtype": "Section Break",
+   "depends_on": "eval:doc.show_footer && !doc.use_custom_footer"
+  },
+  {
+   "fieldname": "footer_copyright",
+   "fieldtype": "Data",
+   "label": "Copyright Text",
+   "default": "© {year}",
+   "description": "Left side. Hidden on phones."
+  },
+  {
+   "fieldname": "powered_by_label",
+   "fieldtype": "Data",
+   "label": "Powered By Label",
+   "default": "Powered by"
+  },
+  {
+   "fieldname": "powered_by_name",
+   "fieldtype": "Data",
+   "label": "Powered By Name",
+   "description": "Leave empty to use the Brand Name."
+  },
+  {
+   "fieldname": "powered_by_url",
+   "fieldtype": "Data",
+   "label": "Powered By Link",
+   "options": "URL",
+   "description": "Optional. Makes the name a link."
+  },
+  {
+   "fieldname": "column_break_footer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "footer_link_label",
+   "fieldtype": "Data",
+   "label": "Right Link Text",
+   "description": "E.g. www.example.com. Leave empty to show the link address."
+  },
+  {
+   "fieldname": "footer_link_url",
+   "fieldtype": "Data",
+   "label": "Right Link URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "custom_footer_section",
+   "fieldtype": "Section Break",
+   "depends_on": "eval:doc.show_footer && doc.use_custom_footer"
+  },
+  {
+   "fieldname": "custom_footer_html",
+   "fieldtype": "Code",
+   "label": "Custom Footer HTML",
+   "options": "HTML",
+   "description": "Placed inside the footer bar. {year} and {brand} are replaced."
+  },
+  {
+   "fieldname": "advanced_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advanced"
+  },
+  {
+   "fieldname": "desk_section",
+   "fieldtype": "Section Break",
+   "label": "Desk"
+  },
+  {
+   "fieldname": "show_theme_toggle",
+   "fieldtype": "Check",
+   "label": "Show Light / Dark Toggle",
+   "default": "1",
+   "description": "Moon / sun button in the navbar and page bars."
+  },
+  {
+   "fieldname": "custom_css_section",
+   "fieldtype": "Section Break",
+   "label": "Custom CSS"
+  },
+  {
+   "fieldname": "custom_css",
+   "fieldtype": "Code",
+   "label": "Custom CSS",
+   "options": "CSS",
+   "description": "Loaded after the theme on Desk and website pages. Theme variables are available, e.g. var(--tm-brand-400)."
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Themora",
+ "name": "Themora Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

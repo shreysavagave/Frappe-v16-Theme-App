@@ -1,9 +1,9 @@
 [project]
-name = "brainmine_theme"
+name = "themora"
 authors = [
     { name = "Brainmine Web Solutions Pvt Ltd", email = "ashwani@brainminetech.com"}
 ]
-description = "Brainmine AI brand theme for Frappe/ERPNext Desk and login"
+description = "White-label brand theme for Frappe/ERPNext Desk and login"
 requires-python = ">=3.14"
 readme = "README.md"
 license = "MIT"

@@ -1,0 +1,240 @@
+// =============================================================================
+// Themora — design tokens
+// -----------------------------------------------------------------------------
+// These are the DEFAULTS. Everything else (desk, login) reads the --tm-*
+// custom properties emitted below, and Themora Settings overrides them at
+// runtime through /api/method/themora.api.theme_css (see themora/theme.py),
+// which loads after this bundle with higher-specificity selectors.
+//
+// Keep the defaults here in sync with themora/theme.py → DEFAULTS.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Brand scale (400 = brand). Generated at runtime from the Primary Color.
+// -----------------------------------------------------------------------------
+$tm-brand-50: #edfaf5;
+$tm-brand-100: #d3f3e8;
+$tm-brand-200: #a8e6d2;
+$tm-brand-300: #74d6b8;
+$tm-brand-400: #40c09c; // brand
+$tm-brand-500: #2fa684;
+$tm-brand-600: #23866b;
+$tm-brand-700: #1e6b57;
+$tm-brand-800: #1a5447;
+$tm-brand-900: #14403a;
+$tm-brand-950: #0a2420;
+
+// Brand gradient. Used for the navbars (90deg, end → start) and the active
+// sidebar item (135deg, start → end).
+$tm-gradient-start: #62d16b;
+$tm-gradient-end: $tm-brand-400;
+$tm-on-gradient: #ffffff;
+
+// -----------------------------------------------------------------------------
+// Neutrals — light (slightly brand-tinted, never pure gray)
+// -----------------------------------------------------------------------------
+$tm-light-page: #f5f8f7;
+$tm-light-surface: #ffffff;
+$tm-light-subtle: #eef3f1;
+$tm-light-border: #e3eae7;
+$tm-light-border-strong: #cbd7d3;
+$tm-light-text: #12201d;
+$tm-light-muted: #5b6b67;
+
+// Extended tinted gray ramp used to re-map Frappe's --gray-* scale so every
+// component that still reads a gray picks up the same undertone.
+$tm-gray-400: #aebdb8;
+$tm-gray-500: #8fa39c;
+$tm-gray-600: #6b7c77;
+$tm-gray-700: #44534f;
+$tm-gray-800: #2a3835;
+
+// -----------------------------------------------------------------------------
+// Neutrals — dark
+// -----------------------------------------------------------------------------
+$tm-dark-page: #0c1513;
+$tm-dark-surface: #121d1a;
+$tm-dark-card: #16231f;
+$tm-dark-subtle: #1a2925; // hover / subtle fills
+$tm-dark-raised: #1f302b; // modals' controls, selected rows
+$tm-dark-border: #24352f;
+$tm-dark-border-strong: #334a43;
+$tm-dark-text: #e6efec;
+$tm-dark-muted: #8fa39c;
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+$tm-font-stack: "Manrope", "InterVariable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+	Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// -----------------------------------------------------------------------------
+// Raw palette + brand assets as custom properties.
+// On `:root` (0,1,0); runtime overrides use `html:root` (0,1,1) and win.
+// -----------------------------------------------------------------------------
+:root {
+	--tm-brand-50: #{$tm-brand-50};
+	--tm-brand-100: #{$tm-brand-100};
+	--tm-brand-200: #{$tm-brand-200};
+	--tm-brand-300: #{$tm-brand-300};
+	--tm-brand-400: #{$tm-brand-400};
+	--tm-brand-500: #{$tm-brand-500};
+	--tm-brand-600: #{$tm-brand-600};
+	--tm-brand-700: #{$tm-brand-700};
+	--tm-brand-800: #{$tm-brand-800};
+	--tm-brand-900: #{$tm-brand-900};
+	--tm-brand-950: #{$tm-brand-950};
+	--tm-brand-rgb: 64, 192, 156; // brand-400 as "r, g, b" for rgba()
+
+	--tm-gradient-start: #{$tm-gradient-start};
+	--tm-gradient-end: #{$tm-gradient-end};
+	--tm-on-gradient: #{$tm-on-gradient};
+	--tm-on-gradient-rgb: 255, 255, 255;
+
+	--tm-light-page: #{$tm-light-page};
+	--tm-light-surface: #{$tm-light-surface};
+	--tm-light-subtle: #{$tm-light-subtle};
+	--tm-light-border: #{$tm-light-border};
+	--tm-light-border-strong: #{$tm-light-border-strong};
+	--tm-light-text: #{$tm-light-text};
+	--tm-light-muted: #{$tm-light-muted};
+	--tm-gray-400: #{$tm-gray-400};
+	--tm-gray-500: #{$tm-gray-500};
+	--tm-gray-600: #{$tm-gray-600};
+	--tm-gray-700: #{$tm-gray-700};
+	--tm-gray-800: #{$tm-gray-800};
+
+	--tm-dark-page: #{$tm-dark-page};
+	--tm-dark-surface: #{$tm-dark-surface};
+	--tm-dark-card: #{$tm-dark-card};
+	--tm-dark-subtle: #{$tm-dark-subtle};
+	--tm-dark-raised: #{$tm-dark-raised};
+	--tm-dark-border: #{$tm-dark-border};
+	--tm-dark-border-strong: #{$tm-dark-border-strong};
+	--tm-dark-text: #{$tm-dark-text};
+	--tm-dark-muted: #{$tm-dark-muted};
+
+	// Navbar co-brand (logo + name). Hidden until set in Themora Settings.
+	--tm-wordmark: "";
+	--tm-logo: none;
+	--tm-logo-space: 0px; // logo size + gap when a logo is set
+	--tm-cobrand-display: none;
+
+	--tm-login-bg: var(--tm-brand-950);
+
+	--tm-font: #{$tm-font-stack};
+
+	// Shape — radius by hierarchy
+	--tm-radius-xs: 4px; // checkboxes, kbd hints
+	--tm-radius-control: 8px; // inputs, buttons, sidebar items
+	--tm-radius-card: 12px; // cards, widgets, dropdowns
+	--tm-radius-modal: 16px; // modals, login card
+	--tm-radius-pill: 999px; // indicator pills, badges
+
+	// Motion
+	--tm-ease: cubic-bezier(0.2, 0, 0, 1);
+	--tm-duration: 120ms;
+}
+
+// -----------------------------------------------------------------------------
+// Semantic tokens
+// Selectors are (0,1,1) so they beat Frappe's `:root` / `[data-theme]` (0,1,0)
+// without !important, and they key off the attribute Frappe's own theme
+// switcher sets, so Light / Dark / Automatic keep working.
+// -----------------------------------------------------------------------------
+@mixin tm-tokens-light {
+	--tm-page: var(--tm-light-page);
+	--tm-surface: var(--tm-light-surface);
+	--tm-card: var(--tm-light-surface);
+	--tm-subtle: var(--tm-light-subtle);
+	--tm-hover: var(--tm-light-subtle);
+	--tm-border: var(--tm-light-border);
+	--tm-border-strong: var(--tm-light-border-strong);
+	--tm-text: var(--tm-light-text);
+	--tm-muted: var(--tm-light-muted);
+
+	// Primary action: brand fill with a contrast-safe label. The runtime CSS
+	// picks white or brand-950, whichever reads better on the brand color.
+	--tm-primary-bg: var(--tm-brand-400);
+	--tm-primary-bg-hover: var(--tm-brand-500);
+	--tm-primary-bg-active: var(--tm-brand-600);
+	--tm-on-primary: var(--tm-brand-950);
+
+	// Brand as text on light surfaces. Runtime CSS picks the lightest shade
+	// with ≥ 4.5:1 on white for links and ≥ 3:1 for non-text accents.
+	--tm-link: var(--tm-brand-700);
+	--tm-link-hover: var(--tm-brand-800);
+	--tm-accent: var(--tm-brand-600);
+
+	// Selected / active surfaces
+	--tm-selected-bg: var(--tm-brand-50);
+	--tm-selected-text: var(--tm-brand-700);
+	--tm-selected-bar: var(--tm-brand-400);
+
+	// Brand gradient surfaces
+	--tm-gradient: linear-gradient(135deg, var(--tm-gradient-start) 0%, var(--tm-gradient-end) 100%);
+	--tm-gradient-bar: linear-gradient(90deg, var(--tm-gradient-end) 0%, var(--tm-gradient-start) 100%);
+
+	// Focus ring (keyboard)
+	--tm-ring: 0 0 0 3px rgba(var(--tm-brand-rgb), 0.35);
+	--tm-ring-inset-border: inset 0 0 0 1px var(--tm-brand-400);
+
+	// Soft, low, tinted elevation — floating layers only.
+	--tm-shadow-sm: 0 1px 2px rgba(10, 36, 32, 0.06);
+	--tm-shadow-md: 0 1px 2px rgba(10, 36, 32, 0.05), 0 4px 12px -2px rgba(10, 36, 32, 0.08);
+	--tm-shadow-lg: 0 0 0 1px rgba(10, 36, 32, 0.04), 0 2px 4px rgba(10, 36, 32, 0.04),
+		0 12px 32px -6px rgba(10, 36, 32, 0.14);
+	--tm-shadow-xl: 0 0 0 1px rgba(10, 36, 32, 0.05), 0 4px 8px rgba(10, 36, 32, 0.04),
+		0 24px 48px -12px rgba(10, 36, 32, 0.22);
+
+	--tm-scrollbar: rgba(18, 32, 29, 0.18);
+	--tm-scrollbar-hover: rgba(18, 32, 29, 0.32);
+}
+
+@mixin tm-tokens-dark {
+	--tm-page: var(--tm-dark-page);
+	--tm-surface: var(--tm-dark-surface);
+	--tm-card: var(--tm-dark-card);
+	--tm-subtle: var(--tm-dark-subtle);
+	--tm-hover: var(--tm-dark-subtle);
+	--tm-border: var(--tm-dark-border);
+	--tm-border-strong: var(--tm-dark-border-strong);
+	--tm-text: var(--tm-dark-text);
+	--tm-muted: var(--tm-dark-muted);
+
+	--tm-primary-bg: var(--tm-brand-400);
+	--tm-primary-bg-hover: var(--tm-brand-300);
+	--tm-primary-bg-active: var(--tm-brand-200);
+	--tm-on-primary: var(--tm-brand-950);
+
+	--tm-link: var(--tm-brand-400);
+	--tm-link-hover: var(--tm-brand-300);
+	--tm-accent: var(--tm-brand-400);
+
+	// brand-950 tint for the active item, readable brand label on top
+	--tm-selected-bg: rgba(var(--tm-brand-rgb), 0.12);
+	--tm-selected-text: var(--tm-brand-300);
+	--tm-selected-bar: var(--tm-brand-400);
+
+	--tm-ring: 0 0 0 3px rgba(var(--tm-brand-rgb), 0.4);
+
+	--tm-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--tm-shadow-md: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 4px 12px -2px rgba(0, 0, 0, 0.45);
+	--tm-shadow-lg: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 12px 32px -6px rgba(0, 0, 0, 0.55);
+	--tm-shadow-xl: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+
+	--tm-scrollbar: rgba(230, 239, 236, 0.14);
+	--tm-scrollbar-hover: rgba(230, 239, 236, 0.26);
+}
+
+// Light tokens apply everywhere except explicit dark mode (website pages have
+// no data-theme attribute, so they get light by default).
+html:not([data-theme="dark"]) {
+	@include tm-tokens-light;
+}
+
+// Dark inherits the light block's tokens, then overrides the semantic ones.
+html[data-theme="dark"] {
+	@include tm-tokens-light;
+	@include tm-tokens-dark;
+}

@@ -1,5 +1,5 @@
 // =============================================================================
-// Brainmine Theme — Desk (/app) overrides for Frappe v16
+// Themora — Desk (/app) overrides for Frappe v16
 // -----------------------------------------------------------------------------
 // Strategy
 //   1. Re-map Frappe's own CSS custom properties (espresso, common, desk and
@@ -18,132 +18,132 @@
 html:not([data-theme="dark"]) {
 	// Tinted gray ramp (espresso --gray-*). Any component still reading a
 	// gray gets the same green undertone as everything else.
-	--gray-50: #{$bm-light-page};
-	--gray-100: #{$bm-light-subtle};
-	--gray-200: #{$bm-light-border};
-	--gray-300: #{$bm-light-border-strong};
-	--gray-400: #{$bm-gray-400};
-	--gray-500: #{$bm-gray-500};
-	--gray-600: #{$bm-gray-600};
-	--gray-700: #{$bm-gray-700};
-	--gray-800: #{$bm-gray-800};
-	--gray-900: #{$bm-light-text};
+	--gray-50: var(--tm-light-page);
+	--gray-100: var(--tm-light-subtle);
+	--gray-200: var(--tm-light-border);
+	--gray-300: var(--tm-light-border-strong);
+	--gray-400: var(--tm-gray-400);
+	--gray-500: var(--tm-gray-500);
+	--gray-600: var(--tm-gray-600);
+	--gray-700: var(--tm-gray-700);
+	--gray-800: var(--tm-gray-800);
+	--gray-900: var(--tm-light-text);
 
 	// Espresso semantic layer (used heavily by the v16 sidebar / new UI)
-	--surface-white: #{$bm-light-surface};
-	--surface-gray-1: #{$bm-light-page};
-	--surface-gray-2: #{$bm-light-subtle};
-	--surface-gray-3: #{$bm-light-border};
-	--surface-gray-4: #{$bm-light-border-strong};
-	--surface-menu-bar: #{$bm-light-page};
-	--surface-modal: #{$bm-light-surface};
-	--outline-gray-1: #{$bm-light-border};
-	--outline-gray-2: #{$bm-light-border};
-	--outline-gray-3: #{$bm-light-border-strong};
-	--outline-gray-modals: #{$bm-light-border};
-	--ink-gray-1: #{$bm-light-border};
-	--ink-gray-2: #{$bm-light-border-strong};
-	--ink-gray-3: #{$bm-gray-400};
-	--ink-gray-4: #{$bm-gray-500};
-	--ink-gray-5: #{$bm-gray-600};
-	--ink-gray-6: #{$bm-light-muted};
-	--ink-gray-7: #{$bm-gray-700};
-	--ink-gray-8: #{$bm-gray-800};
-	--ink-gray-9: #{$bm-light-text};
+	--surface-white: var(--tm-light-surface);
+	--surface-gray-1: var(--tm-light-page);
+	--surface-gray-2: var(--tm-light-subtle);
+	--surface-gray-3: var(--tm-light-border);
+	--surface-gray-4: var(--tm-light-border-strong);
+	--surface-menu-bar: var(--tm-light-page);
+	--surface-modal: var(--tm-light-surface);
+	--outline-gray-1: var(--tm-light-border);
+	--outline-gray-2: var(--tm-light-border);
+	--outline-gray-3: var(--tm-light-border-strong);
+	--outline-gray-modals: var(--tm-light-border);
+	--ink-gray-1: var(--tm-light-border);
+	--ink-gray-2: var(--tm-light-border-strong);
+	--ink-gray-3: var(--tm-gray-400);
+	--ink-gray-4: var(--tm-gray-500);
+	--ink-gray-5: var(--tm-gray-600);
+	--ink-gray-6: var(--tm-light-muted);
+	--ink-gray-7: var(--tm-gray-700);
+	--ink-gray-8: var(--tm-gray-800);
+	--ink-gray-9: var(--tm-light-text);
 
 	// Brand / primary
-	--primary: #{$bm-mint-600}; // also used as text by Frappe → text-safe shade
-	--primary-color: #{$bm-mint-600};
-	--btn-primary: #{$bm-mint-400};
-	--border-primary: #{$bm-mint-600};
-	--progress-bar-bg: #{$bm-mint-400};
+	--primary: var(--tm-accent); // also used as text by Frappe → contrast-checked shade
+	--primary-color: var(--tm-accent);
+	--btn-primary: var(--tm-brand-400);
+	--border-primary: var(--tm-accent);
+	--progress-bar-bg: var(--tm-brand-400);
 
 	// Type colors
-	--text-color: #{$bm-light-text};
-	--heading-color: #{$bm-light-text};
-	--text-neutral: #{$bm-light-text};
-	--text-muted: #{$bm-light-muted};
-	--text-light: #{$bm-light-muted}; // Frappe's lighter gray fails AA on white
-	--disabled-text-color: #{$bm-light-muted};
+	--text-color: var(--tm-light-text);
+	--heading-color: var(--tm-light-text);
+	--text-neutral: var(--tm-light-text);
+	--text-muted: var(--tm-light-muted);
+	--text-light: var(--tm-light-muted); // Frappe's lighter gray fails AA on white
+	--disabled-text-color: var(--tm-light-muted);
 
 	// Layout surfaces
-	--bg-color: #{$bm-light-page};
-	--fg-color: #{$bm-light-surface};
-	--card-bg: #{$bm-light-surface};
-	--navbar-bg: #{$bm-light-surface};
-	--modal-bg: #{$bm-light-surface};
-	--popover-bg: #{$bm-light-surface};
-	--toast-bg: #{$bm-light-surface};
-	--subtle-accent: #{$bm-light-page};
-	--subtle-fg: #{$bm-light-subtle};
-	--fg-hover-color: #{$bm-light-subtle};
-	--highlight-color: #{$bm-light-page};
-	--awesomebar-focus-bg: #{$bm-light-surface};
-	--awesomplete-hover-bg: #{$bm-light-subtle};
+	--bg-color: var(--tm-light-page);
+	--fg-color: var(--tm-light-surface);
+	--card-bg: var(--tm-light-surface);
+	--navbar-bg: var(--tm-light-surface);
+	--modal-bg: var(--tm-light-surface);
+	--popover-bg: var(--tm-light-surface);
+	--toast-bg: var(--tm-light-surface);
+	--subtle-accent: var(--tm-light-page);
+	--subtle-fg: var(--tm-light-subtle);
+	--fg-hover-color: var(--tm-light-subtle);
+	--highlight-color: var(--tm-light-page);
+	--awesomebar-focus-bg: var(--tm-light-surface);
+	--awesomplete-hover-bg: var(--tm-light-subtle);
 
 	// Controls
-	--control-bg: #{$bm-light-surface};
-	--control-bg-on-gray: #{$bm-light-surface};
-	--disabled-control-bg: #{$bm-light-subtle};
-	--input-disabled-bg: #{$bm-light-subtle};
+	--control-bg: var(--tm-light-surface);
+	--control-bg-on-gray: var(--tm-light-surface);
+	--disabled-control-bg: var(--tm-light-subtle);
+	--input-disabled-bg: var(--tm-light-subtle);
 
 	// Buttons
-	--btn-default-bg: #{$bm-light-surface};
-	--btn-default-hover-bg: #{$bm-light-subtle};
-	--btn-ghost-hover-bg: #{$bm-light-subtle};
-	--btn-group-border-color: #{$bm-light-border-strong};
+	--btn-default-bg: var(--tm-light-surface);
+	--btn-default-hover-bg: var(--tm-light-subtle);
+	--btn-ghost-hover-bg: var(--tm-light-subtle);
+	--btn-group-border-color: var(--tm-light-border-strong);
 
 	// Borders
-	--border-color: #{$bm-light-border};
-	--dark-border-color: #{$bm-light-border-strong};
-	--table-border-color: #{$bm-light-border};
+	--border-color: var(--tm-light-border);
+	--dark-border-color: var(--tm-light-border-strong);
+	--table-border-color: var(--tm-light-border);
 
 	// Sidebar (desk/sidebar.scss)
 	--sidebar-hover-color: rgba(18, 32, 29, 0.045);
-	--sidebar-active-color: #{$bm-mint-50};
-	--sidebar-border-color: #{$bm-light-border};
-	--sidebar-select-color: #{$bm-mint-50};
-	--divider-color: #{$bm-light-border};
+	--sidebar-active-color: var(--tm-brand-50);
+	--sidebar-border-color: var(--tm-light-border);
+	--sidebar-select-color: var(--tm-brand-50);
+	--divider-color: var(--tm-light-border);
 
 	// Checkbox / date picker / focus
-	--checkbox-color: #{$bm-mint-600};
-	// White check on mint-600 = 4.5:1 (on mint-400 it would be 2.3:1)
-	--checkbox-gradient: linear-gradient(#{$bm-mint-600}, #{$bm-mint-600});
-	--checkbox-focus-shadow: var(--bm-ring);
-	--focus-default: var(--bm-ring);
-	--focus-green: var(--bm-ring);
-	--date-active-bg: #{$bm-mint-400};
-	--date-active-text: #{$bm-mint-950};
-	--date-range-bg: #{$bm-mint-50};
-	--highlight-shadow: 0 0 0 3px rgba(64, 192, 156, 0.35);
+	--checkbox-color: var(--tm-brand-600);
+	// White check on brand-600 = 4.5:1 (on brand-400 it would be 2.3:1)
+	--checkbox-gradient: linear-gradient(var(--tm-brand-600), var(--tm-brand-600));
+	--checkbox-focus-shadow: var(--tm-ring);
+	--focus-default: var(--tm-ring);
+	--focus-green: var(--tm-ring);
+	--date-active-bg: var(--tm-brand-400);
+	--date-active-text: var(--tm-on-primary);
+	--date-range-bg: var(--tm-brand-50);
+	--highlight-shadow: 0 0 0 3px rgba(var(--tm-brand-rgb), 0.35);
 
 	// Scrollbars
-	--scrollbar-thumb-color: var(--bm-scrollbar);
+	--scrollbar-thumb-color: var(--tm-scrollbar);
 	--scrollbar-track-color: transparent;
 
 	// Depth: borders on cards, shadows only for floating layers
 	--card-shadow: none;
 	--btn-shadow: none;
-	--modal-shadow: var(--bm-shadow-xl);
-	--shadow-xs: var(--bm-shadow-sm);
-	--shadow-sm: var(--bm-shadow-sm);
-	--shadow-base: var(--bm-shadow-md);
-	--shadow-md: var(--bm-shadow-md);
-	--shadow-lg: var(--bm-shadow-lg);
-	--shadow-xl: var(--bm-shadow-lg);
-	--shadow-2xl: var(--bm-shadow-xl);
+	--modal-shadow: var(--tm-shadow-xl);
+	--shadow-xs: var(--tm-shadow-sm);
+	--shadow-sm: var(--tm-shadow-sm);
+	--shadow-base: var(--tm-shadow-md);
+	--shadow-md: var(--tm-shadow-md);
+	--shadow-lg: var(--tm-shadow-lg);
+	--shadow-xl: var(--tm-shadow-lg);
+	--shadow-2xl: var(--tm-shadow-xl);
 
 	// Shape (by hierarchy)
-	--border-radius-tiny: #{$bm-radius-xs};
-	--border-radius-sm: #{$bm-radius-control};
-	--border-radius: #{$bm-radius-control};
+	--border-radius-tiny: var(--tm-radius-xs);
+	--border-radius-sm: var(--tm-radius-control);
+	--border-radius: var(--tm-radius-control);
 	--border-radius-md: 10px;
-	--border-radius-lg: #{$bm-radius-card};
-	--border-radius-xl: #{$bm-radius-modal};
-	--border-radius-full: #{$bm-radius-pill};
+	--border-radius-lg: var(--tm-radius-card);
+	--border-radius-xl: var(--tm-radius-modal);
+	--border-radius-full: var(--tm-radius-pill);
 
 	// Type
-	--font-stack: #{$bm-font-stack};
+	--font-stack: var(--tm-font);
 }
 
 // -----------------------------------------------------------------------------
@@ -151,132 +151,132 @@ html:not([data-theme="dark"]) {
 // -----------------------------------------------------------------------------
 html[data-theme="dark"] {
 	// Light grays stay (dark mode uses them as text); dark grays get tinted.
-	--gray-50: #{$bm-light-page};
-	--gray-100: #{$bm-light-subtle};
-	--gray-200: #{$bm-light-border};
-	--gray-300: #{$bm-light-border-strong};
-	--gray-400: #{$bm-gray-400};
-	--gray-500: #{$bm-gray-500};
-	--gray-600: #{$bm-gray-600};
-	--gray-700: #{$bm-dark-raised};
-	--gray-800: #{$bm-dark-subtle};
-	--gray-900: #{$bm-light-text}; // kept dark: print previews use it as ink
+	--gray-50: var(--tm-light-page);
+	--gray-100: var(--tm-light-subtle);
+	--gray-200: var(--tm-light-border);
+	--gray-300: var(--tm-light-border-strong);
+	--gray-400: var(--tm-gray-400);
+	--gray-500: var(--tm-gray-500);
+	--gray-600: var(--tm-gray-600);
+	--gray-700: var(--tm-dark-raised);
+	--gray-800: var(--tm-dark-subtle);
+	--gray-900: var(--tm-light-text); // kept dark: print previews use it as ink
 
-	--surface-white: #{$bm-dark-page};
-	--surface-gray-1: #{$bm-dark-subtle};
-	--surface-gray-2: #{$bm-dark-raised};
-	--surface-gray-3: #{$bm-dark-border};
-	--surface-gray-4: #{$bm-dark-border-strong};
-	--surface-menu-bar: #{$bm-dark-page};
-	--surface-cards: #{$bm-dark-card};
-	--surface-modal: #{$bm-dark-card};
-	--surface-selected: #{$bm-dark-border};
-	--outline-gray-1: #{$bm-dark-border};
-	--outline-gray-2: #{$bm-dark-border};
-	--outline-gray-3: #{$bm-dark-border-strong};
-	--outline-gray-modals: #{$bm-dark-border};
-	--ink-gray-1: #{$bm-dark-subtle};
-	--ink-gray-2: #{$bm-dark-border-strong};
+	--surface-white: var(--tm-dark-page);
+	--surface-gray-1: var(--tm-dark-subtle);
+	--surface-gray-2: var(--tm-dark-raised);
+	--surface-gray-3: var(--tm-dark-border);
+	--surface-gray-4: var(--tm-dark-border-strong);
+	--surface-menu-bar: var(--tm-dark-page);
+	--surface-cards: var(--tm-dark-card);
+	--surface-modal: var(--tm-dark-card);
+	--surface-selected: var(--tm-dark-border);
+	--outline-gray-1: var(--tm-dark-border);
+	--outline-gray-2: var(--tm-dark-border);
+	--outline-gray-3: var(--tm-dark-border-strong);
+	--outline-gray-modals: var(--tm-dark-border);
+	--ink-gray-1: var(--tm-dark-subtle);
+	--ink-gray-2: var(--tm-dark-border-strong);
 	--ink-gray-3: #5f716b;
 	--ink-gray-4: #6f837c;
 	--ink-gray-5: #7f948d;
-	--ink-gray-6: #{$bm-dark-muted};
+	--ink-gray-6: var(--tm-dark-muted);
 	--ink-gray-7: #a9bab4;
 	--ink-gray-8: #c9d6d2;
-	--ink-gray-9: #{$bm-dark-text};
+	--ink-gray-9: var(--tm-dark-text);
 
-	--primary: #{$bm-mint-400};
-	--primary-color: #{$bm-mint-400};
-	--btn-primary: #{$bm-mint-400};
-	--border-primary: #{$bm-mint-400};
-	--progress-bar-bg: #{$bm-mint-400};
+	--primary: var(--tm-accent);
+	--primary-color: var(--tm-accent);
+	--btn-primary: var(--tm-brand-400);
+	--border-primary: var(--tm-brand-400);
+	--progress-bar-bg: var(--tm-brand-400);
 
-	--text-color: #{$bm-dark-text};
-	--heading-color: #{$bm-dark-text};
-	--text-neutral: #{$bm-dark-text};
-	--text-muted: #{$bm-dark-muted};
-	--text-light: #{$bm-dark-muted};
-	--disabled-text-color: #{$bm-dark-muted};
+	--text-color: var(--tm-dark-text);
+	--heading-color: var(--tm-dark-text);
+	--text-neutral: var(--tm-dark-text);
+	--text-muted: var(--tm-dark-muted);
+	--text-light: var(--tm-dark-muted);
+	--disabled-text-color: var(--tm-dark-muted);
 
-	--bg-color: #{$bm-dark-page};
-	--fg-color: #{$bm-dark-surface};
-	--card-bg: #{$bm-dark-card};
-	--navbar-bg: #{$bm-dark-page};
-	--modal-bg: #{$bm-dark-card};
-	--popover-bg: #{$bm-dark-card};
-	--toast-bg: #{$bm-dark-card};
-	--subtle-accent: #{$bm-dark-surface};
-	--subtle-fg: #{$bm-dark-subtle};
-	--fg-hover-color: #{$bm-dark-subtle};
-	--highlight-color: #{$bm-dark-subtle};
-	--awesomebar-focus-bg: #{$bm-dark-card};
-	--awesomplete-hover-bg: #{$bm-dark-subtle};
+	--bg-color: var(--tm-dark-page);
+	--fg-color: var(--tm-dark-surface);
+	--card-bg: var(--tm-dark-card);
+	--navbar-bg: var(--tm-dark-page);
+	--modal-bg: var(--tm-dark-card);
+	--popover-bg: var(--tm-dark-card);
+	--toast-bg: var(--tm-dark-card);
+	--subtle-accent: var(--tm-dark-surface);
+	--subtle-fg: var(--tm-dark-subtle);
+	--fg-hover-color: var(--tm-dark-subtle);
+	--highlight-color: var(--tm-dark-subtle);
+	--awesomebar-focus-bg: var(--tm-dark-card);
+	--awesomplete-hover-bg: var(--tm-dark-subtle);
 
-	--control-bg: #{$bm-dark-surface};
-	--control-bg-on-gray: #{$bm-dark-surface};
-	--disabled-control-bg: #{$bm-dark-subtle};
-	--input-disabled-bg: #{$bm-dark-subtle};
+	--control-bg: var(--tm-dark-surface);
+	--control-bg-on-gray: var(--tm-dark-surface);
+	--disabled-control-bg: var(--tm-dark-subtle);
+	--input-disabled-bg: var(--tm-dark-subtle);
 
-	--btn-default-bg: #{$bm-dark-subtle};
-	--btn-default-hover-bg: #{$bm-dark-raised};
-	--btn-ghost-hover-bg: #{$bm-dark-subtle};
-	--btn-group-border-color: #{$bm-dark-border-strong};
+	--btn-default-bg: var(--tm-dark-subtle);
+	--btn-default-hover-bg: var(--tm-dark-raised);
+	--btn-ghost-hover-bg: var(--tm-dark-subtle);
+	--btn-group-border-color: var(--tm-dark-border-strong);
 
-	--border-color: #{$bm-dark-border};
-	--dark-border-color: #{$bm-dark-border-strong};
-	--table-border-color: #{$bm-dark-border};
+	--border-color: var(--tm-dark-border);
+	--dark-border-color: var(--tm-dark-border-strong);
+	--table-border-color: var(--tm-dark-border);
 
 	--sidebar-hover-color: rgba(230, 239, 236, 0.05);
-	--sidebar-active-color: rgba(64, 192, 156, 0.12);
-	--sidebar-border-color: #{$bm-dark-border};
-	--sidebar-select-color: rgba(64, 192, 156, 0.12);
-	--divider-color: #{$bm-dark-border};
+	--sidebar-active-color: rgba(var(--tm-brand-rgb), 0.12);
+	--sidebar-border-color: var(--tm-dark-border);
+	--sidebar-select-color: rgba(var(--tm-brand-rgb), 0.12);
+	--divider-color: var(--tm-dark-border);
 
 	// Frappe's dark theme draws a black check icon over this gradient
-	--checkbox-color: #{$bm-mint-400};
-	--checkbox-gradient: linear-gradient(#{$bm-mint-400}, #{$bm-mint-400});
-	--checkbox-focus-shadow: var(--bm-ring);
-	--focus-default: var(--bm-ring);
-	--focus-green: var(--bm-ring);
-	--date-active-bg: #{$bm-mint-400};
-	--date-active-text: #{$bm-mint-950};
-	--date-range-bg: rgba(64, 192, 156, 0.12);
-	--highlight-shadow: 0 0 0 3px rgba(64, 192, 156, 0.4);
+	--checkbox-color: var(--tm-brand-400);
+	--checkbox-gradient: linear-gradient(var(--tm-brand-400), var(--tm-brand-400));
+	--checkbox-focus-shadow: var(--tm-ring);
+	--focus-default: var(--tm-ring);
+	--focus-green: var(--tm-ring);
+	--date-active-bg: var(--tm-brand-400);
+	--date-active-text: var(--tm-on-primary);
+	--date-range-bg: rgba(var(--tm-brand-rgb), 0.12);
+	--highlight-shadow: 0 0 0 3px rgba(var(--tm-brand-rgb), 0.4);
 
-	--scrollbar-thumb-color: var(--bm-scrollbar);
+	--scrollbar-thumb-color: var(--tm-scrollbar);
 	--scrollbar-track-color: transparent;
 
 	--card-shadow: none;
 	--btn-shadow: none;
-	--modal-shadow: var(--bm-shadow-xl);
-	--shadow-xs: var(--bm-shadow-sm);
-	--shadow-sm: var(--bm-shadow-sm);
-	--shadow-base: var(--bm-shadow-md);
-	--shadow-md: var(--bm-shadow-md);
-	--shadow-lg: var(--bm-shadow-lg);
-	--shadow-xl: var(--bm-shadow-lg);
-	--shadow-2xl: var(--bm-shadow-xl);
+	--modal-shadow: var(--tm-shadow-xl);
+	--shadow-xs: var(--tm-shadow-sm);
+	--shadow-sm: var(--tm-shadow-sm);
+	--shadow-base: var(--tm-shadow-md);
+	--shadow-md: var(--tm-shadow-md);
+	--shadow-lg: var(--tm-shadow-lg);
+	--shadow-xl: var(--tm-shadow-lg);
+	--shadow-2xl: var(--tm-shadow-xl);
 
-	--border-radius-tiny: #{$bm-radius-xs};
-	--border-radius-sm: #{$bm-radius-control};
-	--border-radius: #{$bm-radius-control};
+	--border-radius-tiny: var(--tm-radius-xs);
+	--border-radius-sm: var(--tm-radius-control);
+	--border-radius: var(--tm-radius-control);
 	--border-radius-md: 10px;
-	--border-radius-lg: #{$bm-radius-card};
-	--border-radius-xl: #{$bm-radius-modal};
-	--border-radius-full: #{$bm-radius-pill};
+	--border-radius-lg: var(--tm-radius-card);
+	--border-radius-xl: var(--tm-radius-modal);
+	--border-radius-full: var(--tm-radius-pill);
 
-	--font-stack: #{$bm-font-stack};
+	--font-stack: var(--tm-font);
 
 	// Frappe dark.scss re-declares these on the elements themselves, so they
 	// must be re-mapped at the same element level, not only on <html>.
 	.modal,
 	.form-in-grid {
-		--control-bg: #{$bm-dark-surface};
-		--border-color: #{$bm-dark-border};
+		--control-bg: var(--tm-dark-surface);
+		--border-color: var(--tm-dark-border);
 	}
 	.grid-body .editable-row {
-		--control-bg: #{$bm-dark-card};
-		--input-disabled-bg: #{$bm-dark-subtle};
+		--control-bg: var(--tm-dark-card);
+		--input-disabled-bg: var(--tm-dark-subtle);
 	}
 }
 
@@ -292,7 +292,7 @@ html body {
 }
 
 html ::selection {
-	background: rgba(64, 192, 156, 0.28);
+	background: rgba(var(--tm-brand-rgb), 0.28);
 	color: inherit;
 }
 
@@ -327,7 +327,7 @@ html {
 }
 
 // Links in content (field values, comments, editor, alerts) use the
-// text-safe mint. Navigation anchors (sidebar, list rows) keep text color.
+// text-safe brand. Navigation anchors (sidebar, list rows) keep text color.
 html {
 	.control-value a,
 	.like-disabled-input a,
@@ -338,11 +338,11 @@ html {
 	.form-message a,
 	.alert a,
 	.text-link {
-		color: var(--bm-link);
+		color: var(--tm-link);
 		text-decoration: none;
 
 		&:hover {
-			color: var(--bm-link-hover);
+			color: var(--tm-link-hover);
 			text-decoration: underline;
 			text-underline-offset: 2px;
 		}
@@ -350,7 +350,7 @@ html {
 }
 
 // -----------------------------------------------------------------------------
-// 3. Keyboard focus — one consistent 3px mint ring.
+// 3. Keyboard focus — one consistent 3px brand ring.
 // Frappe sets `a:focus, .btn:focus { outline: 0 }`, which hides focus for
 // keyboard users; :focus-visible restores it only for keyboard navigation.
 // -----------------------------------------------------------------------------
@@ -362,14 +362,14 @@ html {
 	[tabindex]:not([tabindex="-1"]):focus-visible,
 	summary:focus-visible {
 		outline: none;
-		box-shadow: var(--bm-ring);
+		box-shadow: var(--tm-ring);
 	}
 
 	.section-head:focus-visible,
 	.section-head .collapse-indicator:focus-visible {
 		outline: none; // replaces Frappe's 1px #c9c9c9 outline
-		box-shadow: var(--bm-ring);
-		border-radius: var(--bm-radius-control);
+		box-shadow: var(--tm-ring);
+		border-radius: var(--tm-radius-control);
 	}
 }
 
@@ -382,21 +382,21 @@ html {
 	// Colors are set on specific elements, never via --text-color on the bar,
 	// so dropdown menus that open from it keep their normal colors.
 	.page-head {
-		background: var(--bm-gradient-bar);
+		background: var(--tm-gradient-bar);
 		border-bottom: 1px solid transparent;
 	}
 
 	.page-head .page-title {
-		color: var(--bm-on-gradient);
+		color: var(--tm-on-gradient);
 
 		.title-area .title-text {
 			font-weight: 700;
-			color: var(--bm-on-gradient);
+			color: var(--tm-on-gradient);
 		}
 
 		.sidebar-toggle-btn {
-			--icon-stroke: var(--bm-on-gradient);
-			color: var(--bm-on-gradient);
+			--icon-stroke: var(--tm-on-gradient);
+			color: var(--tm-on-gradient);
 		}
 	}
 
@@ -404,10 +404,10 @@ html {
 	// `color: var(--ink-gray-9) !important`, so re-point the variables
 	// locally instead of fighting the !important.
 	.page-head .navbar-breadcrumbs {
-		--ink-gray-4: rgba(255, 255, 255, 0.6); // "/" separators
-		--ink-gray-5: rgba(255, 255, 255, 0.85); // parent crumbs
-		--ink-gray-7: #ffffff; // parent crumb hover
-		--ink-gray-9: #ffffff; // current crumb
+		--ink-gray-4: rgba(var(--tm-on-gradient-rgb), 0.6); // "/" separators
+		--ink-gray-5: rgba(var(--tm-on-gradient-rgb), 0.85); // parent crumbs
+		--ink-gray-7: var(--tm-on-gradient); // parent crumb hover
+		--ink-gray-9: var(--tm-on-gradient); // current crumb
 
 		a:hover {
 			text-decoration: none;
@@ -419,132 +419,132 @@ html {
 	.page-head .page-title {
 		.btn.btn-default,
 		.btn.btn-secondary {
-			background-color: rgba(255, 255, 255, 0.16);
-			color: var(--bm-on-gradient);
-			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
-			--icon-stroke: var(--bm-on-gradient);
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.16);
+			color: var(--tm-on-gradient);
+			box-shadow: inset 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.38);
+			--icon-stroke: var(--tm-on-gradient);
 
 			&:hover {
-				background-color: rgba(255, 255, 255, 0.28);
-				color: var(--bm-on-gradient);
+				background-color: rgba(var(--tm-on-gradient-rgb), 0.28);
+				color: var(--tm-on-gradient);
 			}
 
 			&:focus-visible {
 				box-shadow:
-					inset 0 0 0 1px rgba(255, 255, 255, 0.6),
-					0 0 0 3px rgba(255, 255, 255, 0.55);
+					inset 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.6),
+					0 0 0 3px rgba(var(--tm-on-gradient-rgb), 0.55);
 			}
 		}
 
 		// Same reason as §7: Frappe's `.btn:active` uses !important.
 		.btn.btn-default:active,
 		.btn.btn-secondary:active {
-			background-color: rgba(255, 255, 255, 0.32) !important;
-			color: var(--bm-on-gradient) !important;
-			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45) !important;
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.32) !important;
+			color: var(--tm-on-gradient) !important;
+			box-shadow: inset 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.45) !important;
 		}
 
-		// Primary action: white button, dark mint label (stands out on mint)
+		// Primary action: white button, dark brand label (stands out on brand)
 		.btn.btn-primary,
 		.btn.btn-primary:focus {
 			background-color: #ffffff;
-			color: var(--bm-mint-950);
+			color: var(--tm-brand-950);
 			--icon-stroke: currentColor;
 			--icon-fill-bg: #ffffff;
 		}
 
 		.btn.btn-primary:hover {
-			background-color: var(--bm-mint-50);
-			color: var(--bm-mint-950);
+			background-color: var(--tm-brand-50);
+			color: var(--tm-brand-950);
 		}
 
 		.btn.btn-primary:focus-visible {
-			box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55);
+			box-shadow: 0 0 0 3px rgba(var(--tm-on-gradient-rgb), 0.55);
 		}
 
 		// Frappe: `.btn.btn-primary:active { … !important }` (see §7)
 		.btn.btn-primary:active {
-			background-color: var(--bm-mint-100) !important;
-			color: var(--bm-mint-950) !important;
+			background-color: var(--tm-brand-100) !important;
+			color: var(--tm-brand-950) !important;
 		}
 	}
 
 	.page-head .page-icon-group,
 	.page-head .search-bar {
-		--icon-stroke: var(--bm-on-gradient);
-		color: var(--bm-on-gradient);
+		--icon-stroke: var(--tm-on-gradient);
+		color: var(--tm-on-gradient);
 	}
 
 	// Desk home (/desk app launcher) has its own bar: header.desktop-navbar.
 	// desktop.css is injected after our bundle, hence the `html header…`
 	// prefix for specificity.
 	header.desktop-navbar.navbar-container {
-		background: var(--bm-gradient-bar);
+		background: var(--tm-gradient-bar);
 		border-bottom: 1px solid transparent;
 
 		// Search field: frosted white on the gradient
 		.desktop-navbar-modal-search {
-			background-color: rgba(255, 255, 255, 0.18);
-			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
-			border-radius: var(--bm-radius-control);
-			transition: background-color var(--bm-duration) var(--bm-ease);
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.18);
+			box-shadow: inset 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.38);
+			border-radius: var(--tm-radius-control);
+			transition: background-color var(--tm-duration) var(--tm-ease);
 
 			&:hover {
 				outline: none; // replaces desktop.css gray hover outline
-				background-color: rgba(255, 255, 255, 0.28);
+				background-color: rgba(var(--tm-on-gradient-rgb), 0.28);
 			}
 
 			&:focus-visible {
 				box-shadow:
-					inset 0 0 0 1px rgba(255, 255, 255, 0.6),
-					0 0 0 3px rgba(255, 255, 255, 0.55);
+					inset 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.6),
+					0 0 0 3px rgba(var(--tm-on-gradient-rgb), 0.55);
 			}
 		}
 
 		.desktop-search-wrapper span,
 		.desktop-search-icon,
 		.desktop-keyboard-shortcut {
-			color: rgba(255, 255, 255, 0.92);
+			color: rgba(var(--tm-on-gradient-rgb), 0.92);
 		}
 
 		.desktop-search-icon > svg {
-			stroke: var(--bm-on-gradient);
-			--icon-stroke: var(--bm-on-gradient);
+			stroke: var(--tm-on-gradient);
+			--icon-stroke: var(--tm-on-gradient);
 		}
 
 		// Cloud settings + notification bell
 		.desktop-cloud-settings,
 		.desktop-notification-icon {
-			--icon-stroke: var(--bm-on-gradient);
-			color: var(--bm-on-gradient);
+			--icon-stroke: var(--tm-on-gradient);
+			color: var(--tm-on-gradient);
 			opacity: 1;
-			border-radius: var(--bm-radius-control);
+			border-radius: var(--tm-radius-control);
 
 			&:hover {
-				background-color: rgba(255, 255, 255, 0.18);
+				background-color: rgba(var(--tm-on-gradient-rgb), 0.18);
 			}
 		}
 	}
 
-	// Brainmine.AI co-brand: logo + wordmark (CSS-only, no markup change).
+	// Co-brand: logo + wordmark (CSS-only, no markup change).
 	// The logo is a background image on the same pseudo-element as the text;
 	// padding on the logo's side makes room for it ($logo-x = where it starts).
 	// Desk home bar: right after the client logo, behind a thin divider.
 	// Page bar: just left of the page's action buttons (see below).
-	$bm-logo-size: 22px;
-	$bm-logo-gap: 8px;
+	$tm-logo-size: 22px;
+	$tm-logo-gap: 8px; // default of --tm-logo-space (size + gap); 0 when no logo is set
 
-	@mixin bm-wordmark($logo-x: 12px) {
-		content: $bm-wordmark;
-		display: inline-flex;
+	@mixin tm-wordmark($logo-x: 12px) {
+		content: var(--tm-wordmark);
+		display: var(--tm-cobrand-display);
 		align-items: center;
 		flex-shrink: 0;
 		height: 24px;
-		padding-left: $logo-x + $bm-logo-size + $bm-logo-gap;
-		background: url($bm-logo-url) no-repeat $logo-x center / $bm-logo-size $bm-logo-size;
-		border-left: 1px solid rgba(255, 255, 255, 0.45);
-		color: var(--bm-on-gradient);
-		font-family: var(--bm-font);
+		padding-left: calc(#{$logo-x} + var(--tm-logo-space));
+		background: var(--tm-logo) no-repeat $logo-x center / $tm-logo-size $tm-logo-size;
+		border-left: 1px solid rgba(var(--tm-on-gradient-rgb), 0.45);
+		color: var(--tm-on-gradient);
+		font-family: var(--tm-font);
 		font-size: 15px;
 		font-weight: 700;
 		letter-spacing: -0.01em;
@@ -560,7 +560,7 @@ html {
 		flex-shrink: 0;
 
 		&::after {
-			@include bm-wordmark;
+			@include tm-wordmark;
 		}
 	}
 
@@ -568,12 +568,12 @@ html {
 	// primary button) on every page — workspace, list, form, report.
 	// Divider faces the buttons.
 	.page-head .standard-actions::before {
-		@include bm-wordmark($logo-x: 0px);
+		@include tm-wordmark($logo-x: 0px);
 		align-self: center;
 		margin-right: 8px;
 		padding-right: 12px;
 		border-left: 0;
-		border-right: 1px solid rgba(255, 255, 255, 0.45);
+		border-right: 1px solid rgba(var(--tm-on-gradient-rgb), 0.45);
 	}
 
 	// Phones / narrow windows: page actions need the room.
@@ -589,26 +589,26 @@ html {
 		}
 	}
 
-	// Theme toggle (brainmine_theme.bundle.js): white icon button on the
-	// gradient bars — page bars (first item after the Brainmine.AI divider)
+	// Theme toggle (themora.bundle.js): white icon button on the
+	// gradient bars — page bars (first item after the brand divider)
 	// and the Desk home bar (next to the bell). Moon in light, sun in dark.
-	.bm-theme-toggle {
+	.tm-theme-toggle {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
 		width: 28px;
 		height: 28px;
-		border-radius: var(--bm-radius-control);
-		color: var(--bm-on-gradient);
-		transition: background-color var(--bm-duration) var(--bm-ease);
+		border-radius: var(--tm-radius-control);
+		color: var(--tm-on-gradient);
+		transition: background-color var(--tm-duration) var(--tm-ease);
 
 		&:hover {
-			background-color: rgba(255, 255, 255, 0.18);
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.18);
 		}
 
 		&:active {
-			background-color: rgba(255, 255, 255, 0.28);
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.28);
 		}
 
 		svg {
@@ -621,22 +621,22 @@ html {
 			stroke-linejoin: round;
 		}
 
-		.bm-icon-sun {
+		.tm-icon-sun {
 			display: none;
 		}
 	}
 
-	&[data-theme="dark"] .bm-theme-toggle {
-		.bm-icon-moon {
+	&[data-theme="dark"] .tm-theme-toggle {
+		.tm-icon-moon {
 			display: none;
 		}
 
-		.bm-icon-sun {
+		.tm-icon-sun {
 			display: block;
 		}
 	}
 
-	.page-head .bm-theme-toggle-page {
+	.page-head .tm-theme-toggle-page {
 		align-self: center;
 		margin-right: 8px;
 	}
@@ -650,8 +650,8 @@ html {
 
 // -----------------------------------------------------------------------------
 // 5. v16 sidebar — the signature element.
-// Active item: mint-50 fill (mint tint in dark), mint label/icon and a short
-// mint indicator bar on the left. Hover is a barely-there neutral tint.
+// Active item: brand-50 fill (brand tint in dark), brand label/icon and a short
+// brand indicator bar on the left. Hover is a barely-there neutral tint.
 // -----------------------------------------------------------------------------
 html {
 	.body-sidebar {
@@ -663,13 +663,13 @@ html {
 		}
 
 		.standard-sidebar-item {
-			border-radius: var(--bm-radius-control);
-			transition: background-color var(--bm-duration) var(--bm-ease);
+			border-radius: var(--tm-radius-control);
+			transition: background-color var(--tm-duration) var(--tm-ease);
 
 			.item-anchor {
 				color: var(--ink-gray-6);
-				border-radius: var(--bm-radius-control);
-				transition: color var(--bm-duration) var(--bm-ease);
+				border-radius: var(--tm-radius-control);
+				transition: color var(--tm-duration) var(--tm-ease);
 			}
 
 			&:hover .item-anchor {
@@ -694,7 +694,7 @@ html {
 	// Active item (the module / page you are in): full brand gradient with
 	// white label and icon. Same in light and dark.
 	.body-sidebar .standard-sidebar-item.active-sidebar {
-		background: var(--bm-gradient);
+		background: var(--tm-gradient);
 		box-shadow: 0 1px 2px rgba(10, 36, 32, 0.12);
 
 		&,
@@ -704,7 +704,7 @@ html {
 		.keyboard-shortcut,
 		.drop-icon,
 		.sidebar-item-control {
-			color: var(--bm-on-gradient);
+			color: var(--tm-on-gradient);
 		}
 
 		.item-anchor .sidebar-item-label {
@@ -717,8 +717,8 @@ html {
 		.sidebar-item-icon svg,
 		.drop-icon svg,
 		.sidebar-item-control svg {
-			--icon-stroke: var(--bm-on-gradient);
-			color: var(--bm-on-gradient);
+			--icon-stroke: var(--tm-on-gradient);
+			color: var(--tm-on-gradient);
 			stroke: currentColor;
 		}
 
@@ -730,57 +730,57 @@ html {
 	.body-sidebar .standard-sidebar-item.active-sidebar .item-anchor:focus-visible {
 		box-shadow:
 			0 0 0 2px var(--surface-menu-bar),
-			0 0 0 4px var(--bm-mint-600);
+			0 0 0 4px var(--tm-brand-600);
 	}
 
 	// Workspace header / switcher at the top of the sidebar.
-	// Full-bleed solid mint band (the left color of the navbar gradient), the
+	// Full-bleed solid brand band (the left color of the navbar gradient), the
 	// same height as the page head next to it, so the brand bar runs across
 	// the whole top of the screen.
 	// `.body-sidebar` has 8px padding, which the negative margins cancel.
 	// Beats Frappe's `.hover` / `.active-sidebar` (0,1,0) backgrounds.
 	.body-sidebar .sidebar-header {
-		background: var(--bm-mint-400);
+		background: var(--tm-gradient-end);
 		margin: -8px -8px 0;
 		height: calc(var(--page-head-height, 48px) + 1px);
 		padding-left: 16px;
 		padding-right: 12px;
 		border-radius: 0;
 		box-shadow: none;
-		transition: background var(--bm-duration) var(--bm-ease);
+		transition: background var(--tm-duration) var(--tm-ease);
 
-		// hover / menu-open: a light white sheen over the mint
+		// hover / menu-open: a light white sheen over the brand
 		&.hover,
 		&:hover,
 		&.active-sidebar {
 			background:
-				linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-				var(--bm-mint-400);
+				linear-gradient(rgba(var(--tm-on-gradient-rgb), 0.1), rgba(var(--tm-on-gradient-rgb), 0.1)),
+				var(--tm-gradient-end);
 		}
 
 		.header-title {
 			font-weight: 700;
-			color: var(--bm-on-gradient);
+			color: var(--tm-on-gradient);
 		}
 
 		.header-subtitle {
-			color: rgba(255, 255, 255, 0.85);
+			color: rgba(var(--tm-on-gradient-rgb), 0.85);
 		}
 
 		.drop-icon,
 		.drop-icon svg {
-			--icon-stroke: var(--bm-on-gradient);
-			color: var(--bm-on-gradient);
+			--icon-stroke: var(--tm-on-gradient);
+			color: var(--tm-on-gradient);
 		}
 
 		// Workspace logo tile: a soft white plate so any icon color reads
 		.sidebar-item-icon {
-			border-radius: var(--bm-radius-control);
-			box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+			border-radius: var(--tm-radius-control);
+			box-shadow: 0 0 0 1px rgba(var(--tm-on-gradient-rgb), 0.35);
 		}
 
 		&:focus-visible {
-			box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.6);
+			box-shadow: inset 0 0 0 3px rgba(var(--tm-on-gradient-rgb), 0.6);
 		}
 	}
 
@@ -789,18 +789,18 @@ html {
 	}
 
 	.sidebar-notification-count {
-		background: var(--bm-mint-400);
-		color: var(--bm-mint-950);
+		background: var(--tm-brand-400);
+		color: var(--tm-brand-950);
 	}
 
 	.body-sidebar .sidebar-toggle-btn {
-		background: var(--bm-surface);
+		background: var(--tm-surface);
 		border-color: var(--border-color);
-		box-shadow: var(--bm-shadow-sm);
+		box-shadow: var(--tm-shadow-sm);
 	}
 
 	.sidebar-resize-handle:hover::after {
-		background: var(--bm-mint-400);
+		background: var(--tm-brand-400);
 	}
 }
 
@@ -816,72 +816,72 @@ html {
 
 		.awesomplete > ul > li[aria-selected="true"],
 		.awesomplete > ul > li:hover {
-			background-color: var(--bm-selected-bg);
+			background-color: var(--tm-selected-bg);
 		}
 	}
 
 	.awesomebar-modal-footer .help-navigation .help-item {
-		background-color: var(--bm-subtle);
+		background-color: var(--tm-subtle);
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-xs);
+		border-radius: var(--tm-radius-xs);
 		color: var(--text-muted);
 	}
 
 	// Mobile search trigger in the page head
 	.search-bar .awesomplete input {
-		border-radius: var(--bm-radius-control);
+		border-radius: var(--tm-radius-control);
 	}
 }
 
 // -----------------------------------------------------------------------------
 // 7. Buttons
-// Primary: mint with dark label. Default/secondary: quiet surface + hairline.
+// Primary: brand with dark label. Default/secondary: quiet surface + hairline.
 // Borders are inset box-shadows so heights stay at Frappe's 28px.
 // -----------------------------------------------------------------------------
 html {
 	.btn {
 		font-weight: 500;
-		border-radius: var(--bm-radius-control);
+		border-radius: var(--tm-radius-control);
 		transition:
-			background-color var(--bm-duration) var(--bm-ease),
-			box-shadow var(--bm-duration) var(--bm-ease),
-			color var(--bm-duration) var(--bm-ease);
+			background-color var(--tm-duration) var(--tm-ease),
+			box-shadow var(--tm-duration) var(--tm-ease),
+			color var(--tm-duration) var(--tm-ease);
 	}
 
 	.btn.btn-primary,
 	.btn.btn-primary:focus {
 		// :focus included — Bootstrap's `.btn-primary:focus` paints #040404
 		// with a gray ring after every mouse click.
-		background-color: var(--bm-primary-bg);
+		background-color: var(--tm-primary-bg);
 		border-color: transparent;
 		box-shadow: none;
-		color: var(--bm-on-primary);
+		color: var(--tm-on-primary);
 		font-weight: 600;
 		--icon-stroke: currentColor;
-		--icon-fill-bg: var(--bm-primary-bg);
+		--icon-fill-bg: var(--tm-primary-bg);
 	}
 
 	.btn.btn-primary:hover {
-		background-color: var(--bm-primary-bg-hover);
-		color: var(--bm-on-primary);
+		background-color: var(--tm-primary-bg-hover);
+		color: var(--tm-on-primary);
 	}
 
 	.btn.btn-primary:focus-visible {
-		box-shadow: var(--bm-ring);
+		box-shadow: var(--tm-ring);
 	}
 
 	// Frappe: `.btn.btn-primary:active { color: gray-100 !important;
 	// background-color: invert-neutral !important }` flashes black on click.
 	// !important is the only way past it.
 	.btn.btn-primary:active {
-		background-color: var(--bm-primary-bg-active) !important;
-		color: var(--bm-on-primary) !important;
+		background-color: var(--tm-primary-bg-active) !important;
+		color: var(--tm-on-primary) !important;
 	}
 
 	.btn.btn-primary:disabled,
 	.btn.btn-primary.disabled {
-		background-color: var(--bm-primary-bg);
-		color: var(--bm-on-primary);
+		background-color: var(--tm-primary-bg);
+		color: var(--tm-on-primary);
 		opacity: 0.5;
 	}
 
@@ -899,7 +899,7 @@ html {
 		&:focus-visible {
 			box-shadow:
 				inset 0 0 0 1px var(--dark-border-color),
-				var(--bm-ring);
+				var(--tm-ring);
 		}
 	}
 
@@ -929,7 +929,7 @@ html {
 
 // -----------------------------------------------------------------------------
 // 8. Form controls
-// White field + calm hairline; mint border + 3px ring on focus.
+// White field + calm hairline; brand border + 3px ring on focus.
 // Read-only / disabled: subtle tinted fill, no border, muted text — clearly
 // different from an editable field.
 // -----------------------------------------------------------------------------
@@ -939,10 +939,10 @@ html {
 		color: var(--text-color);
 		border-color: transparent;
 		box-shadow: inset 0 0 0 1px var(--border-color);
-		border-radius: var(--bm-radius-control);
+		border-radius: var(--tm-radius-control);
 		transition:
-			box-shadow var(--bm-duration) var(--bm-ease),
-			background-color var(--bm-duration) var(--bm-ease);
+			box-shadow var(--tm-duration) var(--tm-ease),
+			background-color var(--tm-duration) var(--tm-ease);
 
 		&:hover:not(:focus):not(:disabled):not([readonly]) {
 			box-shadow: inset 0 0 0 1px var(--dark-border-color);
@@ -953,8 +953,8 @@ html {
 			background-color: var(--control-bg);
 			border-color: transparent;
 			box-shadow:
-				var(--bm-ring-inset-border),
-				var(--bm-ring);
+				var(--tm-ring-inset-border),
+				var(--tm-ring);
 		}
 
 		&::placeholder {
@@ -972,7 +972,7 @@ html {
 	.like-disabled-input {
 		background-color: var(--disabled-control-bg);
 		color: var(--text-color);
-		border-radius: var(--bm-radius-control);
+		border-radius: var(--tm-radius-control);
 	}
 
 	// Error state keeps Frappe's red, with a matching ring
@@ -991,7 +991,7 @@ html {
 		box-shadow: none;
 
 		&:focus {
-			box-shadow: var(--bm-ring-inset-border);
+			box-shadow: var(--tm-ring-inset-border);
 		}
 	}
 
@@ -1016,46 +1016,46 @@ html {
 		color: var(--text-muted);
 	}
 
-	// Checkboxes: tinted border at rest, solid mint when checked
+	// Checkboxes: tinted border at rest, solid brand when checked
 	input[type="checkbox"] {
 		border-color: var(--dark-border-color);
-		border-radius: var(--bm-radius-xs);
+		border-radius: var(--tm-radius-xs);
 		transition:
-			background-color var(--bm-duration) var(--bm-ease),
-			border-color var(--bm-duration) var(--bm-ease);
+			background-color var(--tm-duration) var(--tm-ease),
+			border-color var(--tm-duration) var(--tm-ease);
 
 		&:hover:not(:disabled):not(:checked) {
-			border-color: var(--bm-accent);
+			border-color: var(--tm-accent);
 		}
 
 		&:focus-visible {
-			box-shadow: var(--bm-ring);
+			box-shadow: var(--tm-ring);
 		}
 	}
 
-	// v16 switch control: mint track when on
+	// v16 switch control: brand track when on
 	.switch-control .input-area:has(input:checked) ~ .switch-visual {
-		background-color: var(--bm-accent);
+		background-color: var(--tm-accent);
 	}
 	.switch-control:hover .input-area:has(input:checked) ~ .switch-visual {
-		background-color: var(--bm-mint-700);
+		background-color: var(--tm-brand-700);
 	}
 	.switch-control .input-area:has(input:focus-visible) ~ .switch-visual {
-		box-shadow: var(--bm-ring);
+		box-shadow: var(--tm-ring);
 	}
 }
 
 html[data-theme="dark"] .switch-control:hover .input-area:has(input:checked) ~ .switch-visual {
-	background-color: var(--bm-mint-300);
+	background-color: var(--tm-brand-300);
 }
 
 // -----------------------------------------------------------------------------
 // 9. List view
-// Comfortable rows, subtle hover, mint selection, tabular numbers (see §2).
+// Comfortable rows, subtle hover, brand selection, tabular numbers (see §2).
 // -----------------------------------------------------------------------------
 html {
 	.frappe-list .list-row-container {
-		transition: background-color var(--bm-duration) var(--bm-ease);
+		transition: background-color var(--tm-duration) var(--tm-ease);
 	}
 
 	.frappe-list .list-row:not(.list-row-head) {
@@ -1066,7 +1066,7 @@ html {
 	.list-row-head {
 		color: var(--text-muted);
 		font-weight: 500;
-		border-radius: var(--bm-radius-control);
+		border-radius: var(--tm-radius-control);
 	}
 
 	.list-subject a,
@@ -1075,12 +1075,12 @@ html {
 	}
 
 	.list-subject a:hover {
-		color: var(--bm-link);
+		color: var(--tm-link);
 	}
 
 	// Selected rows (checkbox ticked)
 	.list-row-container:has(.list-row-checkbox:checked) {
-		background-color: var(--bm-selected-bg);
+		background-color: var(--tm-selected-bg);
 
 		.level-right {
 			background-color: transparent;
@@ -1106,15 +1106,15 @@ html {
 	.std-form-layout > .form-layout {
 		background-color: var(--card-bg);
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-card);
+		border-radius: var(--tm-radius-card);
 	}
 
 	.std-form-layout > .form-layout > .form-page {
-		border-radius: var(--bm-radius-card);
+		border-radius: var(--tm-radius-card);
 	}
 
 	.form-tabs-list {
-		border-radius: var(--bm-radius-card) var(--bm-radius-card) 0 0;
+		border-radius: var(--tm-radius-card) var(--tm-radius-card) 0 0;
 	}
 
 	.form-section .section-head,
@@ -1139,12 +1139,12 @@ html {
 		color: var(--text-muted);
 	}
 
-	// Tabs: mint underline on the active tab (drawn as an inset shadow so the
+	// Tabs: brand underline on the active tab (drawn as an inset shadow so the
 	// tab height does not change). Frappe's rule is (0,5,0).
 	.form-tabs-list .form-tabs .nav-item .nav-link {
 		color: var(--text-muted);
 		font-weight: 500;
-		transition: color var(--bm-duration) var(--bm-ease);
+		transition: color var(--tm-duration) var(--tm-ease);
 
 		&:hover {
 			color: var(--text-color);
@@ -1154,32 +1154,32 @@ html {
 			color: var(--text-color);
 			font-weight: 600;
 			border-bottom-color: transparent;
-			box-shadow: inset 0 -2px 0 var(--bm-accent);
+			box-shadow: inset 0 -2px 0 var(--tm-accent);
 		}
 
 		&:focus-visible {
 			font-weight: 500;
-			box-shadow: var(--bm-ring);
-			border-radius: var(--bm-radius-control);
+			box-shadow: var(--tm-ring);
+			border-radius: var(--tm-radius-control);
 		}
 	}
 
 	// Comments / timeline
 	.comment-box .comment-input-container .ql-container,
 	.timeline-content.frappe-card {
-		border-radius: var(--bm-radius-card);
+		border-radius: var(--tm-radius-card);
 	}
 }
 
 // -----------------------------------------------------------------------------
 // 11. Indicator pills — keep Frappe's semantic colors (red/orange/green/blue/
-// gray). Only weight and shape are adjusted; nothing turns mint.
+// gray). Only weight and shape are adjusted; nothing turns brand.
 // -----------------------------------------------------------------------------
 html {
 	.indicator-pill,
 	.indicator-pill-right {
 		font-weight: 500;
-		border-radius: var(--bm-radius-pill);
+		border-radius: var(--tm-radius-pill);
 		letter-spacing: 0.005em;
 	}
 }
@@ -1192,13 +1192,13 @@ html {
 	.frappe-card,
 	.widget {
 		background-color: var(--card-bg);
-		border-radius: var(--bm-radius-card);
+		border-radius: var(--tm-radius-card);
 		box-shadow: none;
 	}
 
 	.widget {
 		border: 1px solid var(--border-color);
-		transition: border-color var(--bm-duration) var(--bm-ease);
+		transition: border-color var(--tm-duration) var(--tm-ease);
 
 		// Frappe: `.widget.widget-shadow:hover { box-shadow: var(--shadow-base) }`
 		&.widget-shadow:hover,
@@ -1217,9 +1217,9 @@ html {
 		}
 	}
 
-	// Shortcuts: mint icon tint on hover signals they are actionable
+	// Shortcuts: brand icon tint on hover signals they are actionable
 	.shortcut-widget-box:hover .widget-title {
-		color: var(--bm-link);
+		color: var(--tm-link);
 	}
 
 	// Number cards: big, tight, tabular figures
@@ -1231,8 +1231,8 @@ html {
 
 	// Links widget rows
 	.links-widget-box .link-item:hover {
-		background-color: var(--bm-hover);
-		border-radius: var(--bm-radius-control);
+		background-color: var(--tm-hover);
+		border-radius: var(--tm-radius-control);
 	}
 
 	.widget-group .widget-group-title {
@@ -1249,8 +1249,8 @@ html {
 	.dropdown-menu {
 		background-color: var(--popover-bg);
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-card);
-		box-shadow: var(--bm-shadow-lg);
+		border-radius: var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
 		padding: 4px;
 		letter-spacing: normal;
 	}
@@ -1261,15 +1261,15 @@ html {
 
 		&:hover,
 		&:focus {
-			background-color: var(--bm-hover);
+			background-color: var(--tm-hover);
 			color: var(--text-color);
 		}
 
 		// Bootstrap paints active items solid #7c7c7c
 		&.active,
 		&:active {
-			background-color: var(--bm-selected-bg);
-			color: var(--bm-selected-text);
+			background-color: var(--tm-selected-bg);
+			color: var(--tm-selected-text);
 		}
 	}
 
@@ -1280,15 +1280,15 @@ html {
 	.popover {
 		background-color: var(--popover-bg);
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-card);
-		box-shadow: var(--bm-shadow-lg);
+		border-radius: var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
 	}
 
 	.awesomplete > ul {
 		background-color: var(--popover-bg);
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-card);
-		box-shadow: var(--bm-shadow-lg);
+		border-radius: var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
 		padding: 4px;
 
 		> li {
@@ -1297,12 +1297,12 @@ html {
 
 		> li:hover,
 		> li[aria-selected="true"] {
-			background-color: var(--bm-selected-bg);
+			background-color: var(--tm-selected-bg);
 		}
 
 		mark {
 			background-color: transparent;
-			color: var(--bm-selected-text);
+			color: var(--tm-selected-text);
 			font-weight: 600;
 			padding: 0;
 		}
@@ -1316,8 +1316,8 @@ html {
 	}
 
 	.datepicker {
-		border-radius: var(--bm-radius-card);
-		box-shadow: var(--bm-shadow-lg);
+		border-radius: var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
 		border: 1px solid var(--border-color);
 	}
 }
@@ -1328,15 +1328,15 @@ html {
 html {
 	.modal-content {
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-modal);
-		box-shadow: var(--bm-shadow-xl);
+		border-radius: var(--tm-radius-modal);
+		box-shadow: var(--tm-shadow-xl);
 	}
 
 	// Header/footer are painted (sticky header uses background: inherit), so
 	// round them to match the content box.
 	.modal .modal-header {
-		border-top-left-radius: var(--bm-radius-modal);
-		border-top-right-radius: var(--bm-radius-modal);
+		border-top-left-radius: var(--tm-radius-modal);
+		border-top-right-radius: var(--tm-radius-modal);
 		border-bottom-color: var(--border-color);
 		padding: 12px 20px;
 
@@ -1352,14 +1352,14 @@ html {
 
 	.modal .modal-footer {
 		border-top-color: var(--border-color);
-		border-bottom-left-radius: var(--bm-radius-modal);
-		border-bottom-right-radius: var(--bm-radius-modal);
+		border-bottom-left-radius: var(--tm-radius-modal);
+		border-bottom-right-radius: var(--tm-radius-modal);
 		padding: 12px 20px;
 	}
 
 	// Frappe: `.modal-backdrop.show { opacity: .8 }` on gray-800
 	.modal-backdrop {
-		background-color: var(--bm-mint-950);
+		background-color: var(--tm-brand-950);
 	}
 	.modal-backdrop.show {
 		opacity: 0.45;
@@ -1380,8 +1380,8 @@ html[data-theme="dark"] .modal-backdrop.show {
 html {
 	.desk-alert {
 		border: 1px solid var(--border-color);
-		border-radius: var(--bm-radius-card);
-		box-shadow: var(--bm-shadow-lg);
+		border-radius: var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
 
 		.alert-message {
 			color: var(--text-color);
@@ -1399,23 +1399,23 @@ html {
 	}
 
 	*::-webkit-scrollbar-thumb {
-		border-radius: var(--bm-radius-pill);
+		border-radius: var(--tm-radius-pill);
 	}
 
 	*::-webkit-scrollbar-thumb:hover {
-		background: var(--bm-scrollbar-hover);
+		background: var(--tm-scrollbar-hover);
 	}
 }
 
 // -----------------------------------------------------------------------------
-// 17. App footer — Brainmine.AI co-brand bar on every Desk page.
-// Filled by brainmine_theme.bundle.js into Desk's own empty
+// 17. App footer — brand co-brand bar on every Desk page.
+// Filled by themora.bundle.js into Desk's own empty
 // `.main-section > footer` (www/desk.html). Website-style: it sits in normal
 // flow after the page content, so it is only seen once you scroll to the end.
 // #body's min-height pushes it to the bottom of the screen on short pages.
 // -----------------------------------------------------------------------------
 html {
-	--bm-footer-height: 48px;
+	--tm-footer-height: 48px;
 
 	// Frappe's onboarding widget / billing chat bubble set an inline
 	// `padding-bottom: 90px` on .main-section (user_onboarding.bundle.js,
@@ -1427,57 +1427,64 @@ html {
 	}
 
 	.main-section > #body {
-		min-height: calc(100vh - var(--bm-footer-height) - 24px); // 24px = .bm-footer margin-top
+		min-height: calc(100vh - var(--tm-footer-height) - 24px); // 24px = .tm-footer margin-top
 	}
 
-	.bm-footer {
+	.tm-footer {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 16px;
-		min-height: var(--bm-footer-height);
+		min-height: var(--tm-footer-height);
 		margin-top: 24px;
 		padding: 12px 20px;
-		background: var(--bm-surface);
-		border-top: 1px solid var(--bm-border);
-		color: var(--bm-muted);
-		font-family: var(--bm-font);
+		background: var(--tm-surface);
+		border-top: 1px solid var(--tm-border);
+		color: var(--tm-muted);
+		font-family: var(--tm-font);
 		font-size: 12px;
 		line-height: 1;
 		white-space: nowrap;
 
-		.bm-footer-section {
+		.tm-footer-section {
 			display: flex;
 			align-items: center;
 			gap: 12px;
 			min-width: 0;
 		}
 
-		.bm-footer-brand {
-			color: var(--bm-text);
+		.tm-footer-brand {
+			color: var(--tm-text);
 			font-weight: 700;
 			letter-spacing: -0.01em;
 		}
 
 		a {
-			color: var(--bm-link);
+			color: var(--tm-link);
 			font-weight: 600;
 			text-decoration: none;
-			border-radius: var(--bm-radius-xs);
+			border-radius: var(--tm-radius-xs);
 
 			&:hover {
-				color: var(--bm-link-hover);
+				color: var(--tm-link-hover);
 				text-decoration: underline;
 			}
 		}
 	}
 
+	// Custom HTML footer (Themora Settings): free layout, text may wrap.
+	.tm-footer.tm-footer-custom {
+		display: block;
+		line-height: 1.5;
+		white-space: normal;
+	}
+
 	// Phones: keep only the brand and the link.
 	@media (max-width: 575.98px) {
-		.bm-footer {
+		.tm-footer {
 			padding: 0 12px;
 
-			.bm-footer-copy {
+			.tm-footer-copy {
 				display: none;
 			}
 		}
@@ -1485,7 +1492,7 @@ html {
 
 	// Print views / print preview never get the bar.
 	@media print {
-		.bm-footer {
+		.tm-footer {
 			display: none;
 		}
 	}
