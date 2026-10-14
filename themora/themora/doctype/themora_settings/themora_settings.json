@@ -60,6 +60,8 @@
   "recent_documents_limit",
   "recent_documents_keep",
   "show_announcements",
+  "show_sticky_notes",
+  "sticky_notes_max",
   "custom_css_section",
   "custom_css"
  ],
@@ -401,6 +403,21 @@
    "description": "Bar at the top of the Desk for live Themora Announcements (use the Announcements button above to manage them)."
   },
   {
+   "default": "1",
+   "description": "Notes button among the Desk tools (shortcut: Alt+N). Each user can keep private sticky notes on any document they can read, plus personal notes. Pinned notes open by themselves when their document is opened.",
+   "fieldname": "show_sticky_notes",
+   "fieldtype": "Check",
+   "label": "Show Sticky Notes"
+  },
+  {
+   "default": "100",
+   "depends_on": "show_sticky_notes",
+   "description": "How many notes each user can keep (20 to 500).",
+   "fieldname": "sticky_notes_max",
+   "fieldtype": "Int",
+   "label": "Max Notes per User"
+  },
+  {
    "fieldname": "custom_css_section",
    "fieldtype": "Section Break",
    "label": "Custom CSS"
@@ -415,7 +432,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-10-14 15:00:00.000000",
+ "modified": "2026-10-14 16:00:00.000000",
  "modified_by": "Administrator",
  "module": "Themora",
  "name": "Themora Settings",

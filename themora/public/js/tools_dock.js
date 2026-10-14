@@ -50,6 +50,34 @@ export function reveal_in_dock(selector) {
 	return btn || null;
 }
 
+// Position a fixed panel (.tm-popover) for the button that opened it: under a
+// bar button; beside the tools dock (left of it, level with the button), or
+// above the dock on phones where there is no room beside it.
+export function place_popover(panel, anchor) {
+	const rect = anchor.getBoundingClientRect();
+	const vw = window.innerWidth;
+	const vh = window.innerHeight;
+	const width = Math.min(360, vw - 16);
+	const box = anchor.closest(".tm-dock")?.getBoundingClientRect();
+	panel.style.width = `${width}px`;
+	panel.style.bottom = "";
+	panel.style.maxHeight = "";
+
+	if (!box) {
+		panel.style.left = `${Math.max(8, Math.min(rect.right - width, vw - width - 8))}px`;
+		panel.style.top = `${rect.bottom + 8}px`;
+	} else if (vw >= 768 && box.left - width - 16 >= 0) {
+		const max_height = Math.min(480, vh - 80); // the CSS max-height
+		panel.style.left = `${box.left - width - 8}px`;
+		panel.style.top = `${Math.max(8, Math.min(rect.top - 12, vh - max_height - 8))}px`;
+	} else {
+		panel.style.left = `${vw - width - 8}px`;
+		panel.style.top = "auto";
+		panel.style.bottom = `${vh - box.top + 8}px`;
+		panel.style.maxHeight = `${Math.max(160, box.top - 16)}px`;
+	}
+}
+
 export function init_tools_dock(tools) {
 	if (!tools.length || dock) return;
 

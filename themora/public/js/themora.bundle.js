@@ -3,14 +3,15 @@
 //  - `tm-theme` class on <body> as a styling hook
 //  - Footer in Desk's own empty <footer> (Desk only)
 //  - Announcement bar above the Desk (announcements.js, Desk only)
-//  - Desk tools (Desk only): recent documents (recent_documents.js) and a
-//    one-click light/dark theme button, in the right-edge tools dock
+//  - Desk tools (Desk only): recent documents (recent_documents.js), sticky
+//    notes (sticky_notes.js) and a one-click light/dark theme button, in the right-edge tools dock
 //    (tools_dock.js) or, if Tools Position is "In Bar", in the Desk bars
 // Footer and Desk tools follow Themora Settings, passed in as frappe.boot.themora
 // (themora/theme.py → get_boot_info). Colors come from the theme CSS.
 
 import { init_announcements } from "./announcements";
 import { init_recent_documents, make_recent_button } from "./recent_documents";
+import { init_sticky_notes, make_notes_button } from "./sticky_notes";
 import { init_tools_dock } from "./tools_dock";
 
 (function () {
@@ -78,6 +79,7 @@ import { init_tools_dock } from "./tools_dock";
 		const s = settings();
 		const tools = [];
 		if (s.show_recent_documents !== false) tools.push(make_recent_button(extra_class));
+		if (s.show_sticky_notes !== false) tools.push(make_notes_button(extra_class));
 		if (s.show_theme_toggle !== false) tools.push(make_toggle(extra_class));
 		return tools;
 	}
@@ -198,7 +200,10 @@ import { init_tools_dock } from "./tools_dock";
 			const s = settings();
 			if (s.show_announcements !== false) init_announcements();
 			if (s.show_recent_documents !== false) init_recent_documents();
-			if (s.show_recent_documents !== false || s.show_theme_toggle !== false) add_tools();
+			if (s.show_sticky_notes !== false) init_sticky_notes();
+			if (s.show_recent_documents !== false || s.show_sticky_notes !== false || s.show_theme_toggle !== false) {
+				add_tools();
+			}
 		}
 	}
 

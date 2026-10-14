@@ -27,10 +27,18 @@ extend_bootinfo = "themora.theme.extend_bootinfo"
 clear_cache = ["themora.theme.clear_cache", "themora.announcements.clear_cache"]
 
 # Keeps Themora Recent Document bounded (see themora/recent.py).
-scheduler_events = {"daily": ["themora.recent.daily_cleanup"]}
+scheduler_events = {"daily": ["themora.recent.daily_cleanup", "themora.sticky_notes.daily_cleanup"]}
 
 # Recent-document rows must never block deleting a document (or a User): an
 # admin may delete anything other users happen to have opened. Frappe's own
 # View Log is listed in this hook for the same reason. Rows pointing at deleted
 # documents are dropped the next time the user opens the panel.
-ignore_links_on_delete = ["Themora Recent Document"]
+ignore_links_on_delete = ["Themora Recent Document", "Themora Sticky Note"]
+
+# Sticky notes are private: each user only ever sees their own.
+permission_query_conditions = {
+	"Themora Sticky Note": "themora.sticky_notes.get_permission_query_conditions",
+}
+has_permission = {
+	"Themora Sticky Note": "themora.sticky_notes.has_permission",
+}

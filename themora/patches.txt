@@ -7,3 +7,4 @@ themora.patches.v0_2.seed_recent_documents_settings
 themora.patches.v0_2.seed_announcement_settings
 themora.patches.v0_2.recent_documents_limits
 themora.patches.v0_3.seed_tools_position
+themora.patches.v0_3.seed_sticky_notes_settings

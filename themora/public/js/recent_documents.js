@@ -6,7 +6,7 @@
 //    "Kept per User" documents (both in Themora Settings).
 //  - Alt+R opens it from anywhere; ↑ / ↓ / Enter / Esc work inside it.
 
-import { reveal_in_dock } from "./tools_dock";
+import { place_popover, reveal_in_dock } from "./tools_dock";
 
 const t = (text) => (window.__ ? window.__(text) : text);
 const esc = (text) => frappe.utils.escape_html(String(text ?? ""));
@@ -129,31 +129,8 @@ function render(state) {
 	list.querySelector(".is-active")?.scrollIntoView({ block: "nearest" });
 }
 
-// Under a bar button; beside the tools dock (left of it, level with the
-// button), or above it on phones where there is no room beside it.
 function position() {
-	const rect = anchor.getBoundingClientRect();
-	const vw = window.innerWidth;
-	const vh = window.innerHeight;
-	const width = Math.min(360, vw - 16);
-	const dock = anchor.closest(".tm-dock")?.getBoundingClientRect();
-	panel.style.width = `${width}px`;
-	panel.style.bottom = "";
-	panel.style.maxHeight = "";
-
-	if (!dock) {
-		panel.style.left = `${Math.max(8, Math.min(rect.right - width, vw - width - 8))}px`;
-		panel.style.top = `${rect.bottom + 8}px`;
-	} else if (vw >= 768 && dock.left - width - 16 >= 0) {
-		const max_height = Math.min(480, vh - 80); // the CSS max-height
-		panel.style.left = `${dock.left - width - 8}px`;
-		panel.style.top = `${Math.max(8, Math.min(rect.top - 12, vh - max_height - 8))}px`;
-	} else {
-		panel.style.left = `${vw - width - 8}px`;
-		panel.style.top = "auto";
-		panel.style.bottom = `${vh - dock.top + 8}px`;
-		panel.style.maxHeight = `${Math.max(160, dock.top - 16)}px`;
-	}
+	place_popover(panel, anchor);
 }
 
 async function load() {
