@@ -54,6 +54,7 @@
   "custom_footer_html",
   "advanced_tab",
   "desk_section",
+  "tools_position",
   "show_theme_toggle",
   "show_recent_documents",
   "recent_documents_limit",
@@ -355,18 +356,26 @@
    "label": "Desk Tools"
   },
   {
+   "default": "Right Dock",
+   "description": "Where the Desk tools (recent documents, light / dark toggle) appear. Right Dock: a slim rail on the right edge of the screen, collapsible, a round button on phones. In Bar: buttons in the navbar and page bars.",
+   "fieldname": "tools_position",
+   "fieldtype": "Select",
+   "label": "Tools Position",
+   "options": "Right Dock\nIn Bar"
+  },
+  {
    "fieldname": "show_theme_toggle",
    "fieldtype": "Check",
    "label": "Show Light / Dark Toggle",
    "default": "1",
-   "description": "Moon / sun button in the navbar and page bars."
+   "description": "Moon / sun button among the Desk tools."
   },
   {
    "fieldname": "show_recent_documents",
    "fieldtype": "Check",
    "label": "Show Recent Documents",
    "default": "1",
-   "description": "Clock button in the navbar and page bars listing the documents each user opened last (shortcut: Alt+R). History is stored per user on the server, so it follows them across devices."
+   "description": "Clock button among the Desk tools listing the documents each user opened last (shortcut: Alt+R). History is stored per user on the server, so it follows them across devices."
   },
   {
    "fieldname": "recent_documents_limit",
@@ -406,7 +415,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-10-14 12:00:00.000000",
+ "modified": "2026-10-14 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "Themora",
  "name": "Themora Settings",

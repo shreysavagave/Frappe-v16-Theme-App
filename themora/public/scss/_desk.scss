@@ -657,6 +657,160 @@ html {
 		margin-left: 4px;
 	}
 
+	// Tools dock (tools_dock.js): the same white-on-gradient tool buttons on a
+	// slim rail fixed to the right edge, centered vertically. The handle below
+	// the tools collapses it to a small tab. Phones: a round button in the
+	// bottom-right corner that opens the tools upward.
+	.tm-dock {
+		position: fixed;
+		top: 50%;
+		right: 0;
+		z-index: 1030; // above the sticky bars, below the panels (1040) and modals
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		padding: 6px 4px;
+		background: var(--tm-gradient);
+		border-radius: var(--tm-radius-card) 0 0 var(--tm-radius-card);
+		box-shadow: var(--tm-shadow-lg);
+		transform: translateY(-50%);
+		opacity: 0.85;
+		transition: opacity var(--tm-duration) var(--tm-ease);
+
+		&:hover,
+		&:focus-within {
+			opacity: 1;
+		}
+
+		&.is-collapsed {
+			padding: 4px 2px;
+
+			.tm-dock-tools {
+				display: none;
+			}
+
+			.tm-dock-handle {
+				height: 32px;
+				border-top: 0;
+			}
+
+			.tm-dock-chevron {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	.tm-dock-tools {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.tm-dock-btn {
+		width: 32px;
+		height: 32px;
+
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+
+	.tm-dock-handle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 20px;
+		padding-top: 2px;
+		border-top: 1px solid rgba(var(--tm-on-gradient-rgb), 0.25);
+		border-radius: 0 0 var(--tm-radius-control) var(--tm-radius-control);
+		color: var(--tm-on-gradient);
+
+		&:hover {
+			background-color: rgba(var(--tm-on-gradient-rgb), 0.18);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 2px rgba(var(--tm-on-gradient-rgb), 0.7);
+		}
+
+		svg {
+			width: 14px;
+			height: 14px;
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 2.5;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			transition: transform var(--tm-duration) var(--tm-ease);
+		}
+
+		.tm-dock-grid {
+			display: none;
+		}
+	}
+
+	@media (max-width: 767.98px) {
+		.tm-dock {
+			top: auto;
+			right: 16px;
+			bottom: 24px;
+			gap: 6px;
+			padding: 6px;
+			border-radius: 26px;
+			transform: none;
+			opacity: 1;
+
+			&.is-collapsed {
+				padding: 6px;
+
+				.tm-dock-handle {
+					height: 40px;
+				}
+			}
+		}
+
+		.tm-dock-btn {
+			width: 40px;
+			height: 40px;
+		}
+
+		.tm-dock-handle {
+			width: 40px;
+			height: 40px;
+			padding-top: 0;
+			border-top: 0;
+			border-radius: 50%;
+
+			&[aria-expanded="true"] {
+				background-color: rgba(var(--tm-on-gradient-rgb), 0.28);
+			}
+
+			svg {
+				width: 20px;
+				height: 20px;
+				stroke-width: 2;
+			}
+
+			.tm-dock-chevron {
+				display: none;
+			}
+
+			.tm-dock-grid {
+				display: block;
+			}
+		}
+	}
+
+	@media print {
+		.tm-dock {
+			display: none;
+		}
+	}
+
 	// Recent documents panel (recent_documents.js). Appended to <body> and
 	// positioned (fixed) under the button that opened it.
 	.tm-recent-panel {

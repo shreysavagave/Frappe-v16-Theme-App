@@ -1,10 +1,12 @@
-// Recent documents: a clock button on the Desk bars that opens a searchable
+// Recent documents: a clock button (tools dock or Desk bars) that opens a searchable
 // list of the documents the user opened last (server side: themora/recent.py).
 //  - Every saved form the user opens is recorded (at most once a minute per doc).
 //  - The list follows the user across browsers and devices.
 //  - Shows the latest "Shown in the Panel" documents; the filter searches all
 //    "Kept per User" documents (both in Themora Settings).
 //  - Alt+R opens it from anywhere; ↑ / ↓ / Enter / Esc work inside it.
+
+import { reveal_in_dock } from "./tools_dock";
 
 const t = (text) => (window.__ ? window.__(text) : text);
 const esc = (text) => frappe.utils.escape_html(String(text ?? ""));
@@ -37,7 +39,7 @@ function track(frm) {
 // --- Panel -------------------------------------------------------------------
 function build_panel() {
 	panel = document.createElement("div");
-	panel.className = "tm-recent-panel";
+	panel.className = "tm-recent-panel tm-popover";
 	panel.hidden = true;
 	panel.setAttribute("role", "dialog");
 	panel.setAttribute("aria-label", t("Recent documents"));
@@ -127,13 +129,31 @@ function render(state) {
 	list.querySelector(".is-active")?.scrollIntoView({ block: "nearest" });
 }
 
+// Under a bar button; beside the tools dock (left of it, level with the
+// button), or above it on phones where there is no room beside it.
 function position() {
 	const rect = anchor.getBoundingClientRect();
-	const width = Math.min(360, window.innerWidth - 16);
-	const left = Math.max(8, Math.min(rect.right - width, window.innerWidth - width - 8));
+	const vw = window.innerWidth;
+	const vh = window.innerHeight;
+	const width = Math.min(360, vw - 16);
+	const dock = anchor.closest(".tm-dock")?.getBoundingClientRect();
 	panel.style.width = `${width}px`;
-	panel.style.left = `${left}px`;
-	panel.style.top = `${rect.bottom + 8}px`;
+	panel.style.bottom = "";
+	panel.style.maxHeight = "";
+
+	if (!dock) {
+		panel.style.left = `${Math.max(8, Math.min(rect.right - width, vw - width - 8))}px`;
+		panel.style.top = `${rect.bottom + 8}px`;
+	} else if (vw >= 768 && dock.left - width - 16 >= 0) {
+		const max_height = Math.min(480, vh - 80); // the CSS max-height
+		panel.style.left = `${dock.left - width - 8}px`;
+		panel.style.top = `${Math.max(8, Math.min(rect.top - 12, vh - max_height - 8))}px`;
+	} else {
+		panel.style.left = `${vw - width - 8}px`;
+		panel.style.top = "auto";
+		panel.style.bottom = `${vh - dock.top + 8}px`;
+		panel.style.maxHeight = `${Math.max(160, dock.top - 16)}px`;
+	}
 }
 
 async function load() {
@@ -203,9 +223,13 @@ async function clear_history() {
 	render();
 }
 
-// The button nearest the user's eye: the current page bar if any, else the home bar.
+// The button nearest the user's eye: the current page bar if any, else the
+// home bar, else the tools dock (expanded first if it is collapsed).
 function visible_button() {
-	return [...document.querySelectorAll(".tm-recent-btn")].find((b) => b.offsetParent !== null);
+	return (
+		[...document.querySelectorAll(".tm-recent-btn")].find((b) => b.offsetParent !== null) ||
+		reveal_in_dock(".tm-recent-btn")
+	);
 }
 
 // --- Public ------------------------------------------------------------------

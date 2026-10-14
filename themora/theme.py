@@ -169,6 +169,7 @@ def get_boot_info() -> dict:
 		"footer_link_url": s.footer_link_url,
 		"use_custom_footer": bool(s.use_custom_footer),
 		"custom_footer_html": s.custom_footer_html if s.use_custom_footer else "",
+		"tools_position": s.tools_position or "Right Dock",
 		"show_theme_toggle": bool(s.show_theme_toggle),
 		"show_recent_documents": bool(s.show_recent_documents),
 		"recent_documents_limit": max(5, min(int(s.recent_documents_limit or 10), 30)),

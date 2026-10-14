@@ -3,13 +3,15 @@
 //  - `tm-theme` class on <body> as a styling hook
 //  - Footer in Desk's own empty <footer> (Desk only)
 //  - Announcement bar above the Desk (announcements.js, Desk only)
-//  - Bar tools in the Desk bars (Desk only): recent documents
-//    (recent_documents.js) and a one-click light/dark theme button
-// Footer and bar tools follow Themora Settings, passed in as frappe.boot.themora
+//  - Desk tools (Desk only): recent documents (recent_documents.js) and a
+//    one-click light/dark theme button, in the right-edge tools dock
+//    (tools_dock.js) or, if Tools Position is "In Bar", in the Desk bars
+// Footer and Desk tools follow Themora Settings, passed in as frappe.boot.themora
 // (themora/theme.py → get_boot_info). Colors come from the theme CSS.
 
 import { init_announcements } from "./announcements";
 import { init_recent_documents, make_recent_button } from "./recent_documents";
+import { init_tools_dock } from "./tools_dock";
 
 (function () {
 	const t = (text) => (window.__ ? window.__(text) : text);
@@ -70,13 +72,13 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 		return btn;
 	}
 
-	// --- Bar tools ------------------------------------------------------------
-	// The enabled buttons, in display order, for one bar ("page" or "home").
-	function make_bar_tools(where) {
+	// --- Desk tools -----------------------------------------------------------
+	// The enabled buttons, in display order, for the dock or one bar.
+	function make_tools(extra_class) {
 		const s = settings();
 		const tools = [];
-		if (s.show_recent_documents !== false) tools.push(make_recent_button(`tm-bar-btn-${where}`));
-		if (s.show_theme_toggle !== false) tools.push(make_toggle(`tm-bar-btn-${where}`));
+		if (s.show_recent_documents !== false) tools.push(make_recent_button(extra_class));
+		if (s.show_theme_toggle !== false) tools.push(make_toggle(extra_class));
 		return tools;
 	}
 
@@ -87,7 +89,7 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 			.querySelectorAll(".page-head .standard-actions:not([data-tm-tools])")
 			.forEach((actions) => {
 				actions.setAttribute("data-tm-tools", "");
-				actions.prepend(...make_bar_tools("page"));
+				actions.prepend(...make_tools("tm-bar-btn-page"));
 			});
 
 		document
@@ -96,7 +98,7 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 				const bell = bar.querySelector(".desktop-notifications");
 				if (!bell) return;
 				bar.setAttribute("data-tm-tools", "");
-				bell.before(...make_bar_tools("home"));
+				bell.before(...make_tools("tm-bar-btn-home"));
 			});
 
 		sync_toggles();
@@ -113,6 +115,15 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 				add_bar_tools();
 			});
 		}).observe(document.body, { childList: true, subtree: true });
+	}
+
+	function add_tools() {
+		if (settings().tools_position === "In Bar") {
+			watch_for_bars();
+		} else {
+			init_tools_dock(make_tools("tm-dock-btn"));
+			sync_toggles();
+		}
 
 		// data-theme can also change from Frappe's own dialog / system theme.
 		new MutationObserver(sync_toggles).observe(document.documentElement, {
@@ -187,7 +198,7 @@ import { init_recent_documents, make_recent_button } from "./recent_documents";
 			const s = settings();
 			if (s.show_announcements !== false) init_announcements();
 			if (s.show_recent_documents !== false) init_recent_documents();
-			if (s.show_recent_documents !== false || s.show_theme_toggle !== false) watch_for_bars();
+			if (s.show_recent_documents !== false || s.show_theme_toggle !== false) add_tools();
 		}
 	}
 
